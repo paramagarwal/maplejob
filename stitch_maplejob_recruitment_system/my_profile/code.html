@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Applicant Profile - MapleJob</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#a7c8ff",
+                      "on-secondary-fixed": "#001b3e",
+                      "primary": "#001e40",
+                      "surface-tint": "#3a5f94",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#001b3c",
+                      "tertiary-container": "#3e2171",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#43474f",
+                      "secondary": "#005cba",
+                      "on-secondary-container": "#002d61",
+                      "surface-container-high": "#e6e8ea",
+                      "tertiary-fixed-dim": "#d3bbff",
+                      "on-tertiary-fixed": "#260059",
+                      "on-background": "#191c1e",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#003366",
+                      "on-tertiary-container": "#aa8ce2",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container": "#eceef0",
+                      "primary-fixed": "#d5e3ff",
+                      "on-tertiary-fixed-variant": "#533786",
+                      "surface-bright": "#f7f9fb",
+                      "outline": "#737780",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e0e3e5",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-primary-container": "#799dd6",
+                      "tertiary": "#28035b",
+                      "on-secondary-fixed-variant": "#00458e",
+                      "on-primary-fixed-variant": "#1f477b",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "surface-dim": "#d8dadc",
+                      "error-container": "#ffdad6",
+                      "background": "#f7f9fb",
+                      "on-error": "#ffffff",
+                      "primary-fixed-dim": "#a7c8ff",
+                      "surface": "#f7f9fb",
+                      "inverse-surface": "#2d3133",
+                      "secondary-fixed": "#d7e3ff",
+                      "tertiary-fixed": "#ebddff",
+                      "secondary-fixed-dim": "#aac7ff",
+                      "outline-variant": "#c3c6d1",
+                      "secondary-container": "#5095fe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "margin-desktop": "32px",
+                      "base": "4px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "xl": "32px",
+                      "gutter": "16px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "title-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c3c6d1;
+            border-radius: 10px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md text-body-md overflow-x-hidden min-h-screen">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-md h-16 bg-primary text-on-primary">
+<div class="flex items-center gap-md">
+<button class="p-2 hover:bg-primary-container/10 transition-colors rounded-full active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold">MapleJob</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined hover:bg-primary-container/10 p-2 rounded-full cursor-pointer active:scale-95 transition-all duration-200" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant border border-on-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a modern business executive in their late 20s. The individual has a confident yet approachable expression, with soft studio lighting that creates gentle shadows and highlights. The background is a clean, minimalist off-white, reflecting the premium corporate aesthetic of the MapleJob platform. The colors are muted and sophisticated, emphasizing high-end professionalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCMr3NE6rQKuDjgsGaKlMpqV963XMhtXXZhT1zX_g66Cf7R0fAVSBMiL5tUOk_x8IQXnKACuiVNqwW30AFm7EDGEgNwqthL-mQ6jRr_pOOYwb2907gvqW5yDAI5JoEQRNbZGjEDCRoP9txqoaeKuC7SkandeI4LUW4BlrfgzCi1IKvxvKtXvyJTEQxutTTIhKugqFWdJmcYO2DEWIwY2Gkor5VryDj-tJcU-kFGeTJhbHLq0CQEeDYAA"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-24 md:pb-8 px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto">
+<!-- Hero Profile Section -->
+<section class="mb-xl flex flex-col md:flex-row items-center md:items-end gap-lg">
+<div class="relative group">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-3xl overflow-hidden shadow-sm bg-surface-container-high border-4 border-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a young professional woman with dark hair and glasses, smiling warmly against a soft-focus office background. The lighting is bright and natural, creating an atmosphere of reliability and competence. The image is crisp with high detail, fitting a premium recruitment dashboard aesthetic with clean white and soft slate tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANu0YJmICpwn1BQ6OsmESJYNmE4WwTsJbfVs0tbtbFmI0XnHtCtWtLLA_-Tn7hJd52YF1DrIYKsdHqazRHYFsbHrl0FFQa7qDqOzHtEmX8ifV8rS7lbaEzC9s7f8hgKnn9bPpU_9OcIJjlxZTUGyxzBZhH8IcMiZzsyv28PVUl6iAilHlY5LF9mWJDmHdEs60BO022zWAmhPpDeKhm5bBbhaUP47hccuqvCrbw0mvPs9Rffet_QBXzww"/>
+</div>
+<button class="absolute -bottom-2 -right-2 bg-secondary text-on-secondary p-2 rounded-xl shadow-lg hover:scale-105 active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="text-center md:text-left flex-1">
+<div class="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary">Sarah Jenkins</h2>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-full text-label-sm font-label-sm w-fit mx-auto md:mx-0">Active Applicant</span>
+</div>
+<p class="text-on-surface-variant flex items-center justify-center md:justify-start gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                    Toronto, Canada • Senior Product Designer
+                </p>
+</div>
+<div class="flex gap-md mt-md md:mt-0">
+<button class="bg-secondary-container text-on-secondary-container px-lg py-3 rounded-xl font-label-lg text-label-lg flex items-center gap-2 hover:bg-secondary-container/80 transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+                    Share Profile
+                </button>
+</div>
+</section>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Personal Information & LinkedIn (Left Column) -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<!-- Personal Info Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg relative group shadow-sm">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-title-md text-title-md font-bold text-primary">Personal Details</h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary opacity-0 group-hover:opacity-100 transition-opacity" data-icon="edit">edit</span>
+</div>
+<div class="space-y-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Email</p>
+<p class="text-on-surface font-medium">s.jenkins@design.com</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Phone</p>
+<p class="text-on-surface font-medium">+1 (416) 555-0198</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">LinkedIn Profile</p>
+<a class="text-secondary hover:underline font-medium flex items-center gap-1" href="#">
+                                    linkedin.com/in/sjenkins
+                                    <span class="material-symbols-outlined text-xs" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Skills Chip Section -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg relative group shadow-sm">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-title-md text-title-md font-bold text-primary">Skills &amp; Expertise</h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary opacity-0 group-hover:opacity-100 transition-opacity" data-icon="edit">edit</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1.5 rounded-lg text-label-lg font-label-lg">UI/UX Design</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1.5 rounded-lg text-label-lg font-label-lg">Figma Specialist</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1.5 rounded-lg text-label-lg font-label-lg">Prototyping</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1.5 rounded-lg text-label-lg font-label-lg">User Research</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1.5 rounded-lg text-label-lg font-label-lg">Design Systems</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1.5 rounded-lg text-label-lg font-label-lg">Adobe CC</span>
+<span class="bg-surface-variant text-on-surface-variant px-3 py-1.5 rounded-lg text-label-lg font-label-lg border border-outline-variant">+4 More</span>
+</div>
+</div>
+</div>
+<!-- Resume & Education (Right Column) -->
+<div class="md:col-span-8 flex flex-col gap-gutter">
+<!-- Resume Upload / Preview Card -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-lg relative group shadow-sm">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-title-md text-title-md font-bold text-primary">Resume</h3>
+<div class="flex gap-sm">
+<button class="bg-surface-container-lowest text-on-surface-variant border border-outline-variant px-4 py-1.5 rounded-lg text-label-lg font-label-lg flex items-center gap-2 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="upload">upload</span>
+                                Update
+                            </button>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-dashed border-outline rounded-xl p-xl flex items-center justify-between">
+<div class="flex items-center gap-lg">
+<div class="w-14 h-14 bg-error-container/30 rounded-xl flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[32px]" data-icon="description">description</span>
+</div>
+<div>
+<p class="text-on-surface font-bold">Sarah_Jenkins_CV_2024.pdf</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Uploaded 2 days ago • 1.2 MB</p>
+</div>
+</div>
+<button class="text-primary hover:bg-primary-container/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+</div>
+<!-- Education History Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg relative group shadow-sm flex-1">
+<div class="flex justify-between items-center mb-xl">
+<h3 class="font-title-md text-title-md font-bold text-primary">Education History</h3>
+<button class="text-secondary flex items-center gap-1 font-label-lg text-label-lg hover:underline transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                            Add Education
+                        </button>
+</div>
+<div class="space-y-xl relative before:absolute before:left-[19px] before:top-2 before:bottom-2 before:w-[1.5px] before:bg-outline-variant">
+<!-- Education Item 1 -->
+<div class="relative pl-xl">
+<div class="absolute left-0 top-0 w-10 h-10 bg-primary text-on-primary rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[20px]" data-icon="school">school</span>
+</div>
+<div class="flex flex-col md:flex-row md:justify-between items-start mb-1">
+<h4 class="font-title-md text-title-md font-bold text-primary">Master of Interaction Design</h4>
+<span class="text-label-sm font-label-sm text-on-surface-variant md:mt-1">Sep 2018 — Jun 2020</span>
+</div>
+<p class="text-on-surface font-medium mb-1">University of Toronto</p>
+<p class="text-on-surface-variant text-body-md max-w-2xl">Focused on Human-Computer Interaction and Advanced User Research methodologies. Graduated with Honors.</p>
+<button class="mt-md text-secondary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+</button>
+</div>
+<!-- Education Item 2 -->
+<div class="relative pl-xl">
+<div class="absolute left-0 top-0 w-10 h-10 bg-surface-container-high text-primary rounded-full flex items-center justify-center z-10 border border-outline-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="history_edu">history_edu</span>
+</div>
+<div class="flex flex-col md:flex-row md:justify-between items-start mb-1">
+<h4 class="font-title-md text-title-md font-bold text-primary">Bachelors in Graphic Design</h4>
+<span class="text-label-sm font-label-sm text-on-surface-variant md:mt-1">Sep 2014 — May 2018</span>
+</div>
+<p class="text-on-surface font-medium mb-1">York University</p>
+<p class="text-on-surface-variant text-body-md max-w-2xl">Specialized in visual communication, typography, and brand identity design.</p>
+<button class="mt-md text-secondary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Professional Summary (Full Width) -->
+<section class="mt-gutter bg-surface-container-lowest border border-outline-variant rounded-xl p-lg relative group shadow-sm">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-title-md text-title-md font-bold text-primary">Professional Summary</h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary opacity-0 group-hover:opacity-100 transition-opacity" data-icon="edit">edit</span>
+</div>
+<p class="text-body-lg text-on-surface-variant leading-relaxed max-w-4xl">
+                Dedicated Product Designer with over 6 years of experience in creating intuitive, user-centric digital experiences. Proven track record of leading design initiatives for high-traffic SaaS platforms and streamlining complex workflows. Passionate about design systems, accessible interface design, and bridging the gap between business goals and user needs through data-driven research.
+            </p>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface border-t border-outline-variant shadow-sm rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="work_history">work_history</span>
+<span class="font-label-sm text-label-sm">Applied</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button (Optional Contextual Action) -->
+<div class="fixed bottom-24 right-md md:bottom-10 md:right-10 z-40 hidden">
+<!-- Suppressed for Profile as per Relevance Rule -->
+<button class="w-14 h-14 bg-secondary text-on-secondary rounded-2xl shadow-xl flex items-center justify-center active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[28px]" data-icon="edit">edit</span>
+</button>
+</div>
+<script>
+        // Simple Interaction logic for profile highlights
+        document.querySelectorAll('.group').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const editIcon = item.querySelector('.opacity-0');
+                if(editIcon) editIcon.classList.remove('opacity-0');
+            });
+            item.addEventListener('mouseleave', () => {
+                const editIcon = item.querySelector('.opacity-0'); // Re-selecting is not needed but for clarity
+                // Handled by tailwind group-hover, so JS is just for future logic
+            });
+        });
+    </script>
+</body></html>

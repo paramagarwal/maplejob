@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MapleJob - Premium Recruitment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #001e40; /* primary color from config */
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Subtle atmospheric pulse for the splash screen */
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+
+        .bg-glow {
+            background: radial-gradient(circle at center, rgba(80, 149, 254, 0.15) 0%, rgba(0, 30, 64, 0) 70%);
+            animation: pulse-slow 8s ease-in-out infinite;
+        }
+
+        /* Loading Bar Animation */
+        @keyframes loading-progress {
+            0% { width: 0%; left: 0%; }
+            50% { width: 40%; left: 30%; }
+            100% { width: 0%; left: 100%; }
+        }
+
+        .loader-bar {
+            position: relative;
+            height: 2px;
+            width: 140px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            border-radius: 999px;
+        }
+
+        .loader-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 100%;
+            background: #ffffff;
+            animation: loading-progress 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+        }
+
+        /* Entry Transitions */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#a7c8ff",
+                      "on-secondary-fixed": "#001b3e",
+                      "primary": "#001e40",
+                      "surface-tint": "#3a5f94",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#001b3c",
+                      "tertiary-container": "#3e2171",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#43474f",
+                      "secondary": "#005cba",
+                      "on-secondary-container": "#002d61",
+                      "surface-container-high": "#e6e8ea",
+                      "tertiary-fixed-dim": "#d3bbff",
+                      "on-tertiary-fixed": "#260059",
+                      "on-background": "#191c1e",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#003366",
+                      "on-tertiary-container": "#aa8ce2",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container": "#eceef0",
+                      "primary-fixed": "#d5e3ff",
+                      "on-tertiary-fixed-variant": "#533786",
+                      "surface-bright": "#f7f9fb",
+                      "outline": "#737780",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e0e3e5",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-primary-container": "#799dd6",
+                      "tertiary": "#28035b",
+                      "on-secondary-fixed-variant": "#00458e",
+                      "on-primary-fixed-variant": "#1f477b",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "surface-dim": "#d8dadc",
+                      "error-container": "#ffdad6",
+                      "background": "#f7f9fb",
+                      "on-error": "#ffffff",
+                      "primary-fixed-dim": "#a7c8ff",
+                      "surface": "#f7f9fb",
+                      "inverse-surface": "#2d3133",
+                      "secondary-fixed": "#d7e3ff",
+                      "tertiary-fixed": "#ebddff",
+                      "secondary-fixed-dim": "#aac7ff",
+                      "outline-variant": "#c3c6d1",
+                      "secondary-container": "#5095fe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "margin-desktop": "32px",
+                      "base": "4px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "xl": "32px",
+                      "gutter": "16px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "title-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-primary flex flex-col items-center justify-center min-h-screen text-on-primary select-none">
+<!-- Subtle background effect -->
+<div class="fixed inset-0 bg-glow pointer-events-none"></div>
+<!-- Main Content Container -->
+<div class="relative z-10 flex flex-col items-center">
+<!-- Logo Section -->
+<div class="fade-up">
+<h1 class="font-display-lg text-display-lg font-extrabold tracking-tight text-white mb-2">
+                MapleJob
+            </h1>
+</div>
+<!-- Tagline Section -->
+<div class="fade-up delay-1 opacity-0">
+<p class="font-label-lg text-label-lg tracking-[0.2em] text-on-primary-container/80 font-medium">
+                BY MAPLEHUB REALTY
+            </p>
+</div>
+<!-- Loading Indicator -->
+<div class="mt-xl fade-up delay-2 opacity-0 flex flex-col items-center">
+<div class="loader-bar"></div>
+<p class="mt-md font-label-sm text-label-sm text-white/40 tracking-widest">
+                INITIALIZING PLATFORM
+            </p>
+</div>
+</div>
+<!-- Floating Footer Aesthetic -->
+<div class="fixed bottom-margin-desktop left-0 w-full flex justify-center fade-up delay-2 opacity-0 px-lg pointer-events-none">
+<div class="max-w-[1200px] w-full flex justify-between items-center text-white/20">
+<div class="font-label-sm text-label-sm">EST. 2024</div>
+<div class="h-px bg-white/10 flex-grow mx-lg max-w-[200px]"></div>
+<div class="font-label-sm text-label-sm uppercase tracking-tighter">Premium Recruitment Ecosystem</div>
+</div>
+</div>
+<!-- Interactive Layer: Mouse-following glow -->
+<div class="fixed top-0 left-0 w-[600px] h-[600px] rounded-full bg-secondary/10 blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-1000" id="cursor-glow"></div>
+<script>
+        // Smooth cursor glow interaction
+        const glow = document.getElementById('cursor-glow');
+        window.addEventListener('mousemove', (e) => {
+            glow.style.opacity = '1';
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Simulate a transition to main dashboard after a delay (UX simulation)
+        // In a real app, this would be tied to asset loading or authentication checks
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                console.log('Splash sequence complete. Transitioning to Dashboard...');
+            }, 4500);
+        });
+    </script>
+</body></html>

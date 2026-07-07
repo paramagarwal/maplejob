@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Application Submitted | MapleJob</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#a7c8ff",
+                    "on-secondary-fixed": "#001b3e",
+                    "primary": "#001e40",
+                    "surface-tint": "#3a5f94",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#001b3c",
+                    "tertiary-container": "#3e2171",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#43474f",
+                    "secondary": "#005cba",
+                    "on-secondary-container": "#002d61",
+                    "surface-container-high": "#e6e8ea",
+                    "tertiary-fixed-dim": "#d3bbff",
+                    "on-tertiary-fixed": "#260059",
+                    "on-background": "#191c1e",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#003366",
+                    "on-tertiary-container": "#aa8ce2",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container": "#eceef0",
+                    "primary-fixed": "#d5e3ff",
+                    "on-tertiary-fixed-variant": "#533786",
+                    "surface-bright": "#f7f9fb",
+                    "outline": "#737780",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e0e3e5",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-primary-container": "#799dd6",
+                    "tertiary": "#28035b",
+                    "on-secondary-fixed-variant": "#00458e",
+                    "on-primary-fixed-variant": "#1f477b",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "surface-dim": "#d8dadc",
+                    "error-container": "#ffdad6",
+                    "background": "#f7f9fb",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#a7c8ff",
+                    "surface": "#f7f9fb",
+                    "inverse-surface": "#2d3133",
+                    "secondary-fixed": "#d7e3ff",
+                    "tertiary-fixed": "#ebddff",
+                    "secondary-fixed-dim": "#aac7ff",
+                    "outline-variant": "#c3c6d1",
+                    "secondary-container": "#5095fe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "margin-desktop": "32px",
+                    "base": "4px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: subtle-float 4s ease-in-out infinite;
+        }
+
+        .success-checkmark {
+            animation: scale-up 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes scale-up {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .confetti-canvas {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- Top AppBar (JSON Authority) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-md h-16 bg-primary dark:bg-primary-container">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-primary text-3xl">menu</span>
+<h1 class="font-title-lg text-title-lg font-bold text-on-primary dark:text-on-primary-container">MapleJob</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-primary dark:text-on-primary-container">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border-2 border-on-primary-container">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a recruitment specialist in a bright, modern office. The image has a clean, corporate aesthetic with soft daylighting and a blurred background of a high-tech workplace. The palette features subtle blues and whites, consistent with a premium employment platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxFQy0V8OX_JQaGT-gCTCSDZGvW0E61Pdf7cgW5Bo_rrE0usDuB1jeKk0IxP7IukObv2P2OSANnrCj2dsckf_L2KV8GrvCRavGkppLidjUMlcrdRwWkzZEfHqTf1QsQJNqnrWONxb2ZGyo5vd0WTul6fLRbaOfaIl9q1rkv1eiEbWvp8En8D-CAFOBBd4SD0Sye4Kiv3Ov0vGp6YVpoqpg4GseZDn_fALqeLwprP-HyLojJuAfpvVqFQ"/>
+</div>
+</div>
+</header>
+<!-- Success Content Canvas -->
+<main class="min-h-screen pt-16 flex flex-col items-center justify-center px-margin-mobile md:px-margin-desktop relative overflow-hidden">
+<!-- Abstract Background Decorative Elements -->
+<div class="absolute top-1/4 -left-20 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl -z-10 animate-float"></div>
+<div class="absolute bottom-1/4 -right-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl -z-10 animate-float" style="animation-delay: 1s;"></div>
+<!-- Success Message Card -->
+<div class="max-w-2xl w-full text-center space-y-xl py-xl px-lg bg-surface-container-lowest rounded-[2rem] shadow-sm border border-outline-variant/30 z-20">
+<!-- Success Icon Stack -->
+<div class="relative flex justify-center">
+<div class="w-24 h-24 bg-secondary-container/20 rounded-full flex items-center justify-center relative z-10">
+<div class="w-20 h-20 bg-secondary-container flex items-center justify-center rounded-full success-checkmark shadow-lg">
+<span class="material-symbols-outlined text-on-secondary-container text-5xl" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+</div>
+<!-- Radial Glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-secondary/5 rounded-full blur-2xl -z-10"></div>
+</div>
+<!-- Text Content -->
+<div class="space-y-md">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary tracking-tight">Application Sent Successfully!</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mx-auto">
+                    Great job! Your application for the <span class="font-bold text-secondary">Senior Product Designer</span> role has been delivered to the hiring team at <span class="font-bold text-primary">Global Tech Solutions</span>.
+                </p>
+</div>
+<!-- Info Box: Next Steps -->
+<div class="bg-surface-container-low p-md rounded-xl text-left border border-outline-variant/20 space-y-sm max-w-md mx-auto">
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-xl">info</span>
+<span class="font-label-lg text-label-lg">What happens next?</span>
+</div>
+<ul class="space-y-xs text-on-surface-variant font-body-md">
+<li class="flex items-start gap-xs">
+<span class="material-symbols-outlined text-xs mt-1">circle</span>
+<span>The hiring manager will review your profile and portfolio.</span>
+</li>
+<li class="flex items-start gap-xs">
+<span class="material-symbols-outlined text-xs mt-1">circle</span>
+<span>You'll receive an email notification if they'd like to schedule an interview.</span>
+</li>
+<li class="flex items-start gap-xs">
+<span class="material-symbols-outlined text-xs mt-1">circle</span>
+<span>Expect a response typically within 3 to 5 business days.</span>
+</li>
+</ul>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col md:flex-row items-center justify-center gap-md pt-md">
+<button class="w-full md:w-auto px-xl py-3 bg-primary text-on-primary font-label-lg text-label-lg rounded-xl hover:bg-primary-container transition-all active:scale-95 shadow-md flex items-center justify-center gap-sm" onclick="window.location.href='#'">
+<span class="material-symbols-outlined">dashboard</span>
+                    Go to Dashboard
+                </button>
+<button class="w-full md:w-auto px-xl py-3 border-[1.5px] border-secondary text-secondary font-label-lg text-label-lg rounded-xl hover:bg-secondary/5 transition-all active:scale-95 flex items-center justify-center gap-sm" onclick="window.location.href='#'">
+<span class="material-symbols-outlined">work_history</span>
+                    View My Applications
+                </button>
+</div>
+<!-- Support Footer -->
+<p class="font-label-sm text-label-sm text-on-surface-variant/70">
+                Need help with your application? <a class="text-secondary hover:underline" href="#">Contact MapleJob Support</a>
+</p>
+</div>
+<!-- Featured Roles Teaser (Bento Element) -->
+<div class="mt-xl w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="md:col-span-1 p-lg bg-surface-container-high rounded-2xl flex flex-col justify-between">
+<div>
+<h3 class="font-title-md text-title-md text-primary">Resume Strength</h3>
+<p class="text-on-surface-variant text-sm mt-xs">Your profile is 85% complete. Adding a skill certification could help you stand out.</p>
+</div>
+<div class="mt-md h-2 bg-outline-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[85%] rounded-full"></div>
+</div>
+</div>
+<div class="md:col-span-2 p-lg bg-inverse-surface rounded-2xl flex items-center gap-lg">
+<div class="w-16 h-16 bg-surface/10 rounded-xl flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white text-3xl">lightbulb</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-white">Recommended for You</h3>
+<p class="text-surface-variant text-sm mt-xs">We found 4 other roles at Global Tech Solutions that match your skill set perfectly.</p>
+<button class="mt-sm text-secondary-fixed-dim font-label-lg text-label-lg flex items-center gap-xs hover:gap-md transition-all">
+                        Explore matching roles <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (JSON Authority) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-outline shadow-sm rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-colors px-4 py-1">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-colors px-4 py-1">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</div>
+<!-- Active Tab: Applied (Mapped via Semantic Intent) -->
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-primary-container text-on-secondary-container dark:text-primary-fixed rounded-full px-4 py-1 scale-90 transition-all duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">work_history</span>
+<span class="font-label-sm text-label-sm">Applied</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-colors px-4 py-1">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<!-- Confetti Interaction Logic -->
+<canvas class="confetti-canvas" id="confetti"></canvas>
+<script>
+        // Simple Confetti Effect
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const colors = ['#005cba', '#5095fe', '#001e40', '#aac7ff', '#a7c8ff'];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = canvas.width / 2;
+                this.y = canvas.height / 2;
+                this.size = Math.random() * 8 + 4;
+                this.speedX = Math.random() * 20 - 10;
+                this.speedY = Math.random() * -20 - 5;
+                this.gravity = 0.4;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 10 - 5;
+                this.opacity = 1;
+            }
+
+            update() {
+                this.speedY += this.gravity;
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.rotation += this.rotationSpeed;
+                this.opacity -= 0.005;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        function spawnConfetti() {
+            for(let i = 0; i < 100; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles = particles.filter(p => p.opacity > 0);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        setTimeout(() => {
+            spawnConfetti();
+            animate();
+        }, 300);
+
+        // Click to spawn more
+        document.querySelector('.success-checkmark').parentElement.addEventListener('click', () => {
+            spawnConfetti();
+        });
+    </script>
+</body></html>

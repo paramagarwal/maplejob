@@ -1,0 +1,329 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Job Details | MapleJob</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#a7c8ff",
+                        "on-secondary-fixed": "#001b3e",
+                        "primary": "#001e40",
+                        "surface-tint": "#3a5f94",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001b3c",
+                        "tertiary-container": "#3e2171",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#43474f",
+                        "secondary": "#005cba",
+                        "on-secondary-container": "#002d61",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary-fixed-dim": "#d3bbff",
+                        "on-tertiary-fixed": "#260059",
+                        "on-background": "#191c1e",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#003366",
+                        "on-tertiary-container": "#aa8ce2",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container": "#eceef0",
+                        "primary-fixed": "#d5e3ff",
+                        "on-tertiary-fixed-variant": "#533786",
+                        "surface-bright": "#f7f9fb",
+                        "outline": "#737780",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e0e3e5",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-container": "#799dd6",
+                        "tertiary": "#28035b",
+                        "on-secondary-fixed-variant": "#00458e",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "surface-dim": "#d8dadc",
+                        "error-container": "#ffdad6",
+                        "background": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "surface": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed": "#d7e3ff",
+                        "tertiary-fixed": "#ebddff",
+                        "secondary-fixed-dim": "#aac7ff",
+                        "outline-variant": "#c3c6d1",
+                        "secondary-container": "#5095fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "margin-desktop": "32px",
+                        "base": "4px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                        "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- Top App Bar (Shared Component Strategy) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-md h-16 bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined p-2 hover:bg-primary-container/10 transition-colors rounded-full active:scale-95">arrow_back</button>
+<h1 class="font-title-lg text-title-lg font-bold">MapleJob</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined p-2 hover:bg-primary-container/10 transition-colors rounded-full active:scale-95" data-icon="share">share</button>
+<button class="material-symbols-outlined p-2 hover:bg-primary-container/10 transition-colors rounded-full active:scale-95" data-icon="bookmark" id="saveJob">bookmark</button>
+</div>
+</header>
+<main class="pt-20 pb-32 max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Header -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-xl">
+<div class="flex flex-col gap-sm">
+<div class="flex items-center gap-md mb-2">
+<div class="w-16 h-16 md:w-20 md:h-20 bg-surface-container-highest rounded-xl overflow-hidden border border-outline-variant flex items-center justify-center">
+<img class="w-12 h-12 md:w-16 md:h-16 object-contain" data-alt="A professional, high-resolution minimalist corporate logo for a global tech company called NexaSystems. The design features clean geometric lines in primary blue and white, set against a crisp white background. The aesthetic is modern corporate, emphasizing innovation and reliability through balanced typography and generous white space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkDNtq71PbkUapcxxTk7oRMiU-3idv3uSURc1DilAxqco4_YXnC8uV92A2Xi6m536bNsIWgtaYYtFZC0rAUvkMPxPD6c-djVs2pqdu16U65fcMaHuCEfzfHsQIwBCot4aQVZcV6jrp9vEJsrq5cmbDrabyLpJqsOXL4Hiddw3oem3ds_5uKjhypBS0x5JpaQCj7bTli2kFGuaKbiHBojqKSDq05ki-ThtlPn9GUUBClXLsQIzfXHc9Mw">
+</div>
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Senior UX Architect</h2>
+<p class="font-title-md text-title-md text-on-surface-variant">NexaSystems Global</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-md">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="font-label-lg text-label-lg">Toronto, Canada (Hybrid)</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-label-lg text-label-lg">Posted 2 days ago</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="font-label-lg text-label-lg">124 Applicants</span>
+</div>
+</div>
+</div>
+<div class="hidden md:flex gap-4">
+<button class="px-6 py-3 border-[1.5px] border-secondary text-secondary font-label-lg text-label-lg rounded-xl hover:bg-secondary/5 transition-all">Save for later</button>
+<button class="px-8 py-3 bg-secondary text-on-secondary font-label-lg text-label-lg rounded-xl hover:bg-primary transition-all shadow-md">Apply Now</button>
+</div>
+</section>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Left Column: Details -->
+<div class="lg:col-span-2 space-y-xl">
+<!-- Quick Info Chips -->
+<div class="flex flex-wrap gap-sm">
+<div class="px-4 py-2 bg-secondary-fixed text-on-secondary-fixed rounded-full font-label-lg text-label-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+                        $140k – $185k / year
+                    </div>
+<div class="px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed rounded-full font-label-lg text-label-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">work</span>
+                        Full-time
+                    </div>
+<div class="px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full font-label-lg text-label-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">stars</span>
+                        8+ years exp.
+                    </div>
+</div>
+<!-- Job Description Section -->
+<article class="space-y-md">
+<h3 class="font-title-lg text-title-lg text-primary border-b border-outline-variant pb-2">Job Description</h3>
+<div class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed space-y-4">
+<p>As a Senior UX Architect at NexaSystems Global, you will lead the evolution of our enterprise dashboard ecosystem. You'll bridge the gap between complex engineering requirements and intuitive user experiences, ensuring our high-end corporate tools feel effortless and professional.</p>
+<p>We are looking for a visionary designer who understands the nuances of Material Design 3 and can push the boundaries of data visualization and interactive layouts. You will collaborate closely with product managers and front-end engineers to deliver premium recruitment platform features.</p>
+</div>
+</article>
+<!-- Requirements Section -->
+<article class="space-y-md">
+<h3 class="font-title-lg text-title-lg text-primary border-b border-outline-variant pb-2">Requirements</h3>
+<ul class="list-none space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-0.5">check_circle</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant">Mastery of Figma and design system governance for enterprise-scale applications.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-0.5">check_circle</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant">Strong understanding of WCAG 2.1 accessibility standards and inclusive design.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-0.5">check_circle</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant">Ability to translate complex user journeys into high-fidelity interactive prototypes.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-0.5">check_circle</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant">Experience conducting and distilling qualitative user research across global markets.</span>
+</li>
+</ul>
+</article>
+<!-- Skills Required -->
+<article class="space-y-md">
+<h3 class="font-title-lg text-title-lg text-primary border-b border-outline-variant pb-2">Skills Required</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 bg-surface-container text-on-surface font-label-lg text-label-lg rounded-lg border border-outline-variant">Information Architecture</span>
+<span class="px-3 py-1.5 bg-surface-container text-on-surface font-label-lg text-label-lg rounded-lg border border-outline-variant">Figma Components</span>
+<span class="px-3 py-1.5 bg-surface-container text-on-surface font-label-lg text-label-lg rounded-lg border border-outline-variant">User Research</span>
+<span class="px-3 py-1.5 bg-surface-container text-on-surface font-label-lg text-label-lg rounded-lg border border-outline-variant">Design Systems</span>
+<span class="px-3 py-1.5 bg-surface-container text-on-surface font-label-lg text-label-lg rounded-lg border border-outline-variant">Prototyping</span>
+<span class="px-3 py-1.5 bg-surface-container text-on-surface font-label-lg text-label-lg rounded-lg border border-outline-variant">Stakeholder Mgmt</span>
+</div>
+</article>
+</div>
+<!-- Right Column: Sidebar -->
+<aside class="space-y-lg">
+<!-- Company Card -->
+<div class="p-lg bg-surface-container-low rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<h4 class="font-title-md text-title-md text-primary mb-md">About NexaSystems</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">A global leader in enterprise infrastructure and digital workplace solutions, serving 80% of Fortune 500 companies.</p>
+<div class="space-y-3 mb-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">domain</span>
+<span class="font-label-lg text-label-lg text-on-surface">5,000+ Employees</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">language</span>
+<a class="font-label-lg text-label-lg text-secondary hover:underline" href="#">nexasystems.global</a>
+</div>
+</div>
+<button class="w-full py-2 bg-surface-container-highest text-primary font-label-lg text-label-lg rounded-lg hover:bg-surface-variant transition-colors">View Company Profile</button>
+</div>
+<!-- Benefits Preview -->
+<div class="p-lg bg-primary-fixed text-on-primary-fixed rounded-xl overflow-hidden relative">
+<div class="relative z-10">
+<h4 class="font-title-md text-title-md font-bold mb-md">Why Join Us?</h4>
+<ul class="space-y-3">
+<li class="flex items-center gap-2 font-label-lg text-label-lg">
+<span class="material-symbols-outlined text-[20px]">fitness_center</span>
+                                Premium Wellness Plan
+                            </li>
+<li class="flex items-center gap-2 font-label-lg text-label-lg">
+<span class="material-symbols-outlined text-[20px]">flight</span>
+                                Annual Work-From-Anywhere
+                            </li>
+<li class="flex items-center gap-2 font-label-lg text-label-lg">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+                                Learning &amp; Development Stipend
+                            </li>
+</ul>
+</div>
+<div class="absolute -bottom-4 -right-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+</div>
+<!-- Location Map Mock -->
+<div class="rounded-xl border border-outline-variant overflow-hidden h-48 relative">
+<div class="absolute inset-0 bg-surface-container-high flex items-center justify-center">
+<img class="w-full h-full object-cover grayscale opacity-80" data-alt="A stylized, minimalist map showing a clean layout of downtown Toronto streets. The map uses a premium corporate color palette of soft slates, cool blues, and white, with a clear blue location pin marked at the city center. The style is sleek, professional, and consistent with high-end Material Design applications." data-location="Toronto, Canada" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_pusdtoorzHLWo0Nd2xlEU4NnmLZKSjFDQcM4H54juvcBLdvPqhvb1XoCVWmYIeg__FvbMDS1NAIIu75IxiUupYAUBYvmtnOIzxjgzs38_tkimARlM3hzIN78TMeQLNK_n4WTVX9ZGtzz6e-zhSm-IQuIDF33XbkGPR_0qSawQzTF4J3YDnsRXl8I9hh8wvsw1Au0kipzUVzb4h2r9pDRFTvUdWAdf2LRejq3OLgSmLRGfolcLVGJ6Q">
+</div>
+<div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full border border-outline-variant font-label-sm text-label-sm shadow-sm">
+                        Downtown Toronto Tech Hub
+                    </div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Bottom Action Bar (Mobile Only & Primary Desktop Trigger) -->
+<div class="fixed bottom-0 left-0 w-full p-md bg-white/95 backdrop-blur-md border-t border-outline-variant z-[60] flex items-center justify-between gap-md md:justify-center">
+<button class="md:hidden flex items-center justify-center w-12 h-12 rounded-xl border-[1.5px] border-outline text-on-surface-variant hover:bg-surface-container-high active:scale-95 transition-all">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+<button class="flex-1 max-w-[400px] h-14 bg-secondary text-on-secondary font-title-md text-title-md font-bold rounded-xl shadow-lg hover:bg-primary hover:shadow-xl active:scale-95 transition-all flex items-center justify-center gap-2">
+            Apply Now
+            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="md:hidden flex items-center justify-center w-12 h-12 rounded-xl border-[1.5px] border-outline text-on-surface-variant hover:bg-surface-container-high active:scale-95 transition-all">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Toggle save bookmark
+        const saveBtn = document.getElementById('saveJob');
+        let isSaved = false;
+        
+        saveBtn.addEventListener('click', () => {
+            isSaved = !isSaved;
+            if (isSaved) {
+                saveBtn.classList.add('fill-icon', 'text-secondary-fixed');
+                saveBtn.innerText = 'bookmark';
+            } else {
+                saveBtn.classList.remove('fill-icon', 'text-secondary-fixed');
+                saveBtn.innerText = 'bookmark';
+            }
+        });
+
+        // Simple scroll animation for the top app bar
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

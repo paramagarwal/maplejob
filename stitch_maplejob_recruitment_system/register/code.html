@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register | MapleJob</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .transition-soft {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#a7c8ff",
+                      "on-secondary-fixed": "#001b3e",
+                      "primary": "#001e40",
+                      "surface-tint": "#3a5f94",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#001b3c",
+                      "tertiary-container": "#3e2171",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#43474f",
+                      "secondary": "#005cba",
+                      "on-secondary-container": "#002d61",
+                      "surface-container-high": "#e6e8ea",
+                      "tertiary-fixed-dim": "#d3bbff",
+                      "on-tertiary-fixed": "#260059",
+                      "on-background": "#191c1e",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#003366",
+                      "on-tertiary-container": "#aa8ce2",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container": "#eceef0",
+                      "primary-fixed": "#d5e3ff",
+                      "on-tertiary-fixed-variant": "#533786",
+                      "surface-bright": "#f7f9fb",
+                      "outline": "#737780",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e0e3e5",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-primary-container": "#799dd6",
+                      "tertiary": "#28035b",
+                      "on-secondary-fixed-variant": "#00458e",
+                      "on-primary-fixed-variant": "#1f477b",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "surface-dim": "#d8dadc",
+                      "error-container": "#ffdad6",
+                      "background": "#f7f9fb",
+                      "on-error": "#ffffff",
+                      "primary-fixed-dim": "#a7c8ff",
+                      "surface": "#f7f9fb",
+                      "inverse-surface": "#2d3133",
+                      "secondary-fixed": "#d7e3ff",
+                      "tertiary-fixed": "#ebddff",
+                      "secondary-fixed-dim": "#aac7ff",
+                      "outline-variant": "#c3c6d1",
+                      "secondary-container": "#5095fe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "margin-desktop": "32px",
+                      "base": "4px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "xl": "32px",
+                      "gutter": "16px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "title-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+<!-- Left Side: Branding and Visuals (Desktop Only) -->
+<section class="hidden md:flex md:w-1/2 bg-primary relative items-center justify-center p-xl overflow-hidden">
+<!-- Background Animation -->
+
+<div class="relative z-10 text-center max-w-lg">
+<h1 class="font-display-lg text-display-lg text-on-primary mb-md">MapleJob</h1>
+<p class="font-body-lg text-body-lg text-on-primary/80 mb-xl">The premium ecosystem for executive recruitment and real estate excellence. Elevate your career with authoritative tools and high-end networking.</p>
+<!-- Feature Grid -->
+<div class="grid grid-cols-2 gap-md text-left">
+<div class="p-md rounded-xl bg-on-primary/10 backdrop-blur-sm">
+<span class="material-symbols-outlined text-secondary-fixed mb-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h3 class="font-title-md text-title-md text-on-primary">Verified Posts</h3>
+<p class="font-label-sm text-label-sm text-on-primary/60">Curated high-value opportunities only.</p>
+</div>
+<div class="p-md rounded-xl bg-on-primary/10 backdrop-blur-sm">
+<span class="material-symbols-outlined text-secondary-fixed mb-sm" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<h3 class="font-title-md text-title-md text-on-primary">Fast Track</h3>
+<p class="font-label-sm text-label-sm text-on-primary/60">Direct pipelines to decision makers.</p>
+</div>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary/20 blur-[100px] rounded-full"></div>
+<div class="absolute top-0 left-0 w-48 h-48 bg-tertiary-container/30 blur-[80px] rounded-full"></div>
+</section>
+<!-- Right Side: Registration Form -->
+<main class="w-full md:w-1/2 flex flex-col items-center justify-center p-margin-mobile md:p-margin-desktop bg-surface min-h-screen">
+<!-- Mobile Logo -->
+<div class="md:hidden mb-lg text-center">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold">MapleJob</h1>
+</div>
+<div class="w-full max-w-md">
+<header class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Create Account</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Join the community of elite professionals.</p>
+</header>
+<form class="space-y-md" onsubmit="event.preventDefault();">
+<!-- Full Name -->
+<div class="space-y-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-1" for="fullname">Full Name</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant">person</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-soft outline-none text-on-surface font-body-md" id="fullname" placeholder="Johnathan Doe" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-1" for="email">Email Address</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant">mail</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-soft outline-none text-on-surface font-body-md" id="email" placeholder="j.doe@corporate.com" type="email"/>
+</div>
+</div>
+<!-- Phone Number -->
+<div class="space-y-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-1" for="phone">Phone Number</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant">call</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-soft outline-none text-on-surface font-body-md" id="phone" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-xs">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-1" for="password">Password</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant">lock</span>
+<input class="w-full pl-12 pr-12 py-3 bg-surface-container-low border border-outline-variant rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-soft outline-none text-on-surface font-body-md" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Terms -->
+<div class="flex items-start space-x-sm py-xs">
+<input class="mt-1 w-5 h-5 rounded border-outline-variant text-secondary focus:ring-secondary bg-surface-container-low" id="terms" type="checkbox"/>
+<label class="font-body-md text-body-md text-on-surface-variant" for="terms">
+                        I agree to the <a class="text-secondary font-medium hover:underline" href="#">Terms of Service</a> and <a class="text-secondary font-medium hover:underline" href="#">Privacy Policy</a>.
+                    </label>
+</div>
+<!-- Submit Button -->
+<button class="w-full py-4 bg-primary text-on-primary font-title-md text-title-md rounded-xl hover:bg-primary-container active:scale-95 transition-soft shadow-lg shadow-primary/10 mt-md" type="submit">
+                    Create Account
+                </button>
+</form>
+<!-- Social Signup Divider -->
+<div class="relative my-xl">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant"></div>
+</div>
+<div class="relative flex justify-center text-label-lg">
+<span class="bg-surface px-4 text-on-surface-variant">Or register with</span>
+</div>
+</div>
+<!-- Social Links -->
+<div class="grid grid-cols-2 gap-md">
+<button class="flex items-center justify-center gap-sm py-3 border border-outline-variant rounded-xl hover:bg-surface-container-high transition-soft font-label-lg text-on-surface">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.26.81-.58z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"></path>
+</svg>
+                    Google
+                </button>
+<button class="flex items-center justify-center gap-sm py-3 border border-outline-variant rounded-xl hover:bg-surface-container-high transition-soft font-label-lg text-on-surface">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.137 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z"></path>
+</svg>
+                    LinkedIn
+                </button>
+</div>
+<!-- Login Link -->
+<footer class="mt-xl text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Already have an account? 
+                    <a class="text-secondary font-bold hover:underline ml-xs transition-colors" href="#">Log In</a>
+</p>
+</footer>
+</div>
+</main>
+<!-- Simple Atmospheric Interaction -->
+<script>
+        // Micro-interaction for input fields
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+
+        // Floating particle effect for the background (vanilla js)
+        const shaderContainer = document.querySelector('webgl-shader');
+        if(shaderContainer) {
+            window.addEventListener('mousemove', (e) => {
+                const moveX = (e.clientX / window.innerWidth - 0.5) * 15;
+                const moveY = (e.clientY / window.innerHeight - 0.5) * 15;
+                shaderContainer.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
+            });
+        }
+    </script>
+</body></html>

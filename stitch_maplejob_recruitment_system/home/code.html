@@ -1,0 +1,377 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>MapleJob - Premium Job Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#a7c8ff",
+                    "on-secondary-fixed": "#001b3e",
+                    "primary": "#001e40",
+                    "surface-tint": "#3a5f94",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#001b3c",
+                    "tertiary-container": "#3e2171",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#43474f",
+                    "secondary": "#005cba",
+                    "on-secondary-container": "#002d61",
+                    "surface-container-high": "#e6e8ea",
+                    "tertiary-fixed-dim": "#d3bbff",
+                    "on-tertiary-fixed": "#260059",
+                    "on-background": "#191c1e",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#003366",
+                    "on-tertiary-container": "#aa8ce2",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container": "#eceef0",
+                    "primary-fixed": "#d5e3ff",
+                    "on-tertiary-fixed-variant": "#533786",
+                    "surface-bright": "#f7f9fb",
+                    "outline": "#737780",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e0e3e5",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-primary-container": "#799dd6",
+                    "tertiary": "#28035b",
+                    "on-secondary-fixed-variant": "#00458e",
+                    "on-primary-fixed-variant": "#1f477b",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "surface-dim": "#d8dadc",
+                    "error-container": "#ffdad6",
+                    "background": "#f7f9fb",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#a7c8ff",
+                    "surface": "#f7f9fb",
+                    "inverse-surface": "#2d3133",
+                    "secondary-fixed": "#d7e3ff",
+                    "tertiary-fixed": "#ebddff",
+                    "secondary-fixed-dim": "#aac7ff",
+                    "outline-variant": "#c3c6d1",
+                    "secondary-container": "#5095fe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "margin-desktop": "32px",
+                    "base": "4px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen text-on-surface">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-md h-16 bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-on-primary/20">
+
+</div>
+<h1 class="font-title-lg text-title-lg font-bold">MapleJob</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-primary-container/10 transition-transform active:scale-95 duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<main class="pt-20 pb-24 px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto">
+<!-- Greeting & Search -->
+<section class="mb-lg">
+<div class="mb-md">
+<p class="font-body-lg text-body-lg text-on-surface-variant">Hello, Alex</p>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Find your dream job</h2>
+</div>
+<div class="relative flex items-center gap-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-secondary transition-all outline-none font-body-md text-body-md" placeholder="Search for jobs..." type="text">
+</div>
+<button class="bg-primary text-on-primary p-4 rounded-xl flex items-center justify-center shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</section>
+<!-- Categories -->
+<section class="mb-xl">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-title-md text-title-md font-bold">Categories</h3>
+<button class="text-secondary font-label-lg text-label-lg">See All</button>
+</div>
+<div class="flex gap-sm overflow-x-auto hide-scrollbar pb-2">
+<div class="flex-none flex items-center gap-xs px-md py-sm bg-secondary-container text-on-secondary-container rounded-full border border-secondary-container font-label-lg text-label-lg">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+                    IT
+                </div>
+<div class="flex-none flex items-center gap-xs px-md py-sm bg-surface-container-high text-on-surface-variant rounded-full border border-outline-variant font-label-lg text-label-lg hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+                    Sales
+                </div>
+<div class="flex-none flex items-center gap-xs px-md py-sm bg-surface-container-high text-on-surface-variant rounded-full border border-outline-variant font-label-lg text-label-lg hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">campaign</span>
+                    Marketing
+                </div>
+<div class="flex-none flex items-center gap-xs px-md py-sm bg-surface-container-high text-on-surface-variant rounded-full border border-outline-variant font-label-lg text-label-lg hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">palette</span>
+                    Design
+                </div>
+</div>
+</section>
+<!-- Featured Jobs -->
+<section class="mb-xl">
+<h3 class="font-title-md text-title-md font-bold mb-md">Featured Jobs</h3>
+<div class="flex gap-md overflow-x-auto hide-scrollbar pb-4 -mx-margin-mobile px-margin-mobile">
+<!-- Featured Card 1 -->
+<div class="flex-none w-72 bg-primary rounded-xl p-md text-on-primary shadow-lg relative overflow-hidden group transition-all duration-300 hover:shadow-xl">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-secondary/20 rounded-full blur-3xl"></div>
+<div class="flex justify-between items-start mb-lg">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center overflow-hidden">
+<img class="w-8 h-8 object-contain" data-alt="A minimalist tech company logo featuring abstract geometric shapes in bold primary blue, set against a clean white background. The style is modern corporate branding, sharp lines, and vector-like clarity, representing a forward-thinking software enterprise in a premium recruitment interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc5h4IsIyvhajzx4t1eTVLlHV7uDZ6sHCjUdgRF9oIleHdjYcTYwQhBawUy7f60ztOmWgl-Ij2wqJPQ2NKCtoaLNMurc2EPyKlZTeTdQfO1oflba_mPHmCkMvy4gsHgPcyMeqp9xEYxACmXhhmRMJRsvbffUvFOM3RLwhpZ61UYQLa8oWGS_AD2aPAXY0udVCm9OxJEmIRBeeXG8XjKhu7G1BfPKDyQxg1r9rHJWpxRG2VV_wNzuwlOQ">
+</div>
+<button class="text-on-primary/70 hover:text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg font-bold mb-1">Senior Product Designer</h4>
+<p class="font-body-md text-body-md text-on-primary/70 mb-md">TechFlow Inc.</p>
+<div class="flex items-center gap-xs text-on-primary/60 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                            San Francisco, CA
+                        </div>
+</div>
+<div class="mt-xl flex justify-between items-center">
+<span class="font-title-md text-title-md font-bold">$140k - $180k</span>
+<span class="bg-secondary-container/20 px-sm py-1 rounded font-label-sm text-label-sm">Full-time</span>
+</div>
+</div>
+<!-- Featured Card 2 -->
+<div class="flex-none w-72 bg-secondary-container rounded-xl p-md text-on-secondary-container shadow-sm border border-outline-variant transition-all duration-300 hover:shadow-md">
+<div class="flex justify-between items-start mb-lg">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center overflow-hidden">
+<img class="w-8 h-8 object-contain" data-alt="A sleek corporate logo for a global logistics company, utilizing dark navy and metallic silver colors. The icon is a stylized globe combined with a fast-moving arrow. The design is professional, premium, and clean, suitable for a high-end recruitment platform application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnr5q81ckJiBC_V__U5FpZQ-64ptSi3d95vaH9iVwSJ1VY6G1EiDyZz734FXgFvNV7bZ3YijSCxvyGyMZad1M6X2xTSZzrBtc7Ggvz8dEo78q2zFwD4Igg2HJe8_xy4O0FCXkR7zcJX6NrMSZOgDtOtL_8O3Y5YTpJWRu57KiKBfxNtyt-AtWdJ7CKurgnq506xUygVOtKZn9i2a-vkRTPLZm9IgShyjaXD1SLjAqs-_MgQXQPmllM4Q">
+</div>
+<button class="text-on-secondary-container/70 hover:text-on-secondary-container">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg font-bold mb-1">Marketing Manager</h4>
+<p class="font-body-md text-body-md text-on-secondary-container/70 mb-md">Global Retail Co.</p>
+<div class="flex items-center gap-xs text-on-secondary-container/60 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                            Remote
+                        </div>
+</div>
+<div class="mt-xl flex justify-between items-center">
+<span class="font-title-md text-title-md font-bold">$90k - $120k</span>
+<span class="bg-on-secondary-container/10 px-sm py-1 rounded font-label-sm text-label-sm">Hybrid</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended Jobs List -->
+<section class="mb-xl">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-title-md text-title-md font-bold">Recommended for you</h3>
+<button class="text-secondary font-label-lg text-label-lg">See All</button>
+</div>
+<div class="grid grid-cols-1 gap-md">
+<!-- Job Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex items-start gap-md hover:shadow-md transition-shadow">
+<div class="w-14 h-14 bg-surface-container-high rounded-lg flex-none flex items-center justify-center overflow-hidden">
+<img class="w-10 h-10 object-contain" data-alt="A modern, high-contrast logo for a creative agency, featuring a bold 'A' integrated with a digital brush stroke. Colors are charcoal grey and a vibrant accent blue. The lighting is crisp, and the style is minimal and professional, reflecting a top-tier creative firm on a premium job platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXYhVoEVkh_6yFGITJ1r-IIfKYtx8zEGXBEnKmCI8ikbaJzMwUkQkIT-KJopZo8maJ8n42eRHl4n7lemiKoicCt05H4DC4WU81hZlhvjQ1O-Eb53y4TFytg5MxqWn09zRbU_MCKQqKuva0K94jRVhYI6RG7xmDD7vKjH7IsLD6XqxfUqye7Zw8Jrr7EZMnHESyCU9U9r2PHD_1O7OkIxK80uv1osHGey2xc9a-adRHdPz1yjTDbm8OVQ">
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-md text-title-md font-bold text-primary">Senior Data Scientist</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">DataPeak Solutions</p>
+</div>
+<button class="text-outline hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+<div class="mt-sm flex flex-wrap items-center gap-md">
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                Toronto, ON
+                            </div>
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+                                $120k - $150k
+                            </div>
+</div>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex items-start gap-md hover:shadow-md transition-shadow">
+<div class="w-14 h-14 bg-surface-container-high rounded-lg flex-none flex items-center justify-center overflow-hidden">
+<img class="w-10 h-10 object-contain" data-alt="A sophisticated emblem for a fintech company, showcasing an abstract shield shape formed by interlocking silver lines. The aesthetic is extremely high-end, clean, and secure, set against a subtle light grey background. Designed to convey trust and technological advancement for a recruitment app's job listing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5htzbzIk12vrxeOd3F9yfTGsaSmlZrghFH1mPjy3MYT4-l_uhIJxi9wmaQq_hsbJD0q-1163VU1Efypc5poj2xFMnkT01R7aSN_xzOcEHWAnB3QXGJMWBHcq_shdNd_0pKLldU3caNWwHFd-k_KEsO3pHx9Ad0vr4y3Ve7B9kx79dAlBRR9Nj6enVgcFSApuNEYcMsoN33-nIWrWYopoCOtsZiucd03iILDo0fNQ9k3F5qpl5FmXBPA">
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-md text-title-md font-bold text-primary">HR Specialist</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Nexus Financial</p>
+</div>
+<button class="text-outline hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+<div class="mt-sm flex flex-wrap items-center gap-md">
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                Vancouver, BC
+                            </div>
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+                                $75k - $95k
+                            </div>
+</div>
+</div>
+</div>
+<!-- Job Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex items-start gap-md hover:shadow-md transition-shadow">
+<div class="w-14 h-14 bg-surface-container-high rounded-lg flex-none flex items-center justify-center overflow-hidden">
+<img class="w-10 h-10 object-contain" data-alt="A vibrant and energetic logo for a health and wellness startup, featuring a stylized leaf combined with a heartbeat line. The palette uses fresh greens and calming teals. The visual style is friendly yet professional, captured in a clean, high-resolution vector style for a premium mobile interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDriFrrmGLXt0oQRPnbl1taUbJ-UKraMg-UF41uWh8t0zlOmYrAizrkAp1g7Pz5P6dtvug-SLZuUZ1MbSiHs0EOboAtnrLagFd7oVf8K-PqzYEfo_y2vvXcmItUNzCUClxjtx8DB80Y9ihbjEyLjejsf0kajbxQclq_r61gyXmGsQYypjgnRU1fJOcqMmZ99U0_f0FFW_VsCD5BliGbHv_Kf1-HPJBgbngSxgWwsrN-l6hku1veaD9CdA">
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-md text-title-md font-bold text-primary">Sales Executive</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Vitality Health</p>
+</div>
+<button class="text-outline hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+<div class="mt-sm flex flex-wrap items-center gap-md">
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                Montreal, QC
+                            </div>
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+                                $80k - $110k
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-outline shadow-sm">
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-primary-container text-on-secondary-container dark:text-primary-fixed rounded-full px-4 py-1 transition-all duration-150 scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-colors px-4 py-1" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-colors px-4 py-1" href="#">
+<span class="material-symbols-outlined">work_history</span>
+<span class="font-label-sm text-label-sm">Applied</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-colors px-4 py-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for job cards
+        document.querySelectorAll('.bg-surface-container-lowest').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+
+        // Filter button simple interaction
+        const filterBtn = document.querySelector('button .material-symbols-outlined[innerText="tune"]')?.parentElement;
+        if(filterBtn) {
+            filterBtn.addEventListener('click', () => {
+                console.log('Filter clicked');
+                // Intent: Show bottom sheet or modal
+            });
+        }
+    </script>
+
+
+</body></html>

@@ -1,0 +1,66 @@
+name: MapleJob CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  mobile_app_ci:
+    name: Mobile App Build & Test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Set up Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Install Dependencies
+        run: flutter pub get
+        working-directory: maplejob_app
+
+      - name: Run Code Analysis
+        run: flutter analyze
+        working-directory: maplejob_app
+
+      - name: Run Test Suite
+        run: flutter test
+        working-directory: maplejob_app
+
+  web_admin_ci:
+    name: Admin Dashboard Build & Verify
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Install Dependencies
+        run: flutter pub get
+        working-directory: maplejob_admin
+
+      - name: Run Code Analysis
+        run: flutter analyze
+        working-directory: maplejob_admin
+
+      - name: Verify Web Build
+        run: flutter build web --release
+        working-directory: maplejob_admin

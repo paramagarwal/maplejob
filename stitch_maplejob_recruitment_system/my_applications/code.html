@@ -1,0 +1,373 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Applied Jobs | MapleJob</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        @media (max-width: 768px) {
+            .pb-safe { padding-bottom: calc(env(safe-area-inset-bottom) + 16px); }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#a7c8ff",
+                        "on-secondary-fixed": "#001b3e",
+                        "primary": "#001e40",
+                        "surface-tint": "#3a5f94",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001b3c",
+                        "tertiary-container": "#3e2171",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#43474f",
+                        "secondary": "#005cba",
+                        "on-secondary-container": "#002d61",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary-fixed-dim": "#d3bbff",
+                        "on-tertiary-fixed": "#260059",
+                        "on-background": "#191c1e",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#003366",
+                        "on-tertiary-container": "#aa8ce2",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container": "#eceef0",
+                        "primary-fixed": "#d5e3ff",
+                        "on-tertiary-fixed-variant": "#533786",
+                        "surface-bright": "#f7f9fb",
+                        "outline": "#737780",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e0e3e5",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-container": "#799dd6",
+                        "tertiary": "#28035b",
+                        "on-secondary-fixed-variant": "#00458e",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "surface-dim": "#d8dadc",
+                        "error-container": "#ffdad6",
+                        "background": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "surface": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed": "#d7e3ff",
+                        "tertiary-fixed": "#ebddff",
+                        "secondary-fixed-dim": "#aac7ff",
+                        "outline-variant": "#c3c6d1",
+                        "secondary-container": "#5095fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "margin-desktop": "32px",
+                        "base": "4px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                        "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-md h-16 bg-primary dark:bg-primary-container">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-on-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young business professional with a warm, confident smile, set against a soft-focus modern office background. The lighting is natural and bright, echoing the light-mode corporate aesthetic of a high-end recruitment platform. The individual is wearing a smart-casual navy blazer over a crisp white shirt." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZe-q0dGZojAatLGdcF_afMeWwrqEWz8RB7Zg1YVKX2ai8OjyF-H9Y8OLNVnbK9dDNU7dQz_XewbcxZQyaC8EjjtLdcKxA8yzm2AVIfMOYxrBBSIMbW1eITYG9brdtsct4bOEZt6VQO4fh-IL9OxtZNdKuasLp30jRj4JKbihtBSJxLBghM65Eb6QgcfnA-OD-aI19pQtme0Zk2wkzpqeBtRcbpOJv1ivPZN03jweAyU_ChX1kJLI6gw">
+</div>
+<h1 class="font-title-lg text-title-lg font-bold text-on-primary dark:text-on-primary-container">MapleJob</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 rounded-full hover:bg-primary-container/10 dark:hover:bg-primary/10 text-on-primary transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-2 rounded-full hover:bg-primary-container/10 dark:hover:bg-primary/10 text-on-primary transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-20 pb-24 md:pb-8 px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto min-h-screen">
+<!-- Header Section -->
+<div class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Applied Jobs</h2>
+<p class="text-on-surface-variant font-body-md mt-1">Track the status of your 8 active applications.</p>
+</div>
+<div class="flex items-center gap-sm overflow-x-auto pb-2 md:pb-0 custom-scrollbar">
+<button class="flex items-center gap-xs px-4 py-2 bg-surface-container-high rounded-full font-label-lg text-label-lg hover:bg-surface-container-highest transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-[20px]" data-icon="filter_list">filter_list</span>
+                    Filter
+                </button>
+<button class="flex items-center gap-xs px-4 py-2 bg-surface-container-high rounded-full font-label-lg text-label-lg hover:bg-surface-container-highest transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-[20px]" data-icon="sort">sort</span>
+                    Date Applied
+                </button>
+</div>
+</div>
+<!-- Bento-inspired List View -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Sidebar Stats (Desktop Only) -->
+<div class="hidden lg:block lg:col-span-3 space-y-md">
+<div class="p-md rounded-xl bg-surface-container-low border border-outline-variant">
+<h3 class="font-title-md text-title-md text-primary mb-md">Quick Summary</h3>
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-lg">Total</span>
+<span class="font-bold text-primary">12</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-lg">Active</span>
+<span class="font-bold text-secondary">8</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-lg">Shortlisted</span>
+<span class="font-bold text-on-tertiary-fixed-variant">2</span>
+</div>
+</div>
+</div>
+<div class="p-md rounded-xl bg-primary-container text-on-primary-container relative overflow-hidden group">
+<div class="relative z-10">
+<p class="font-label-lg mb-1">Resume Strength</p>
+<h4 class="font-headline-lg-mobile font-bold">85%</h4>
+<button class="mt-4 text-sm font-bold underline decoration-2 underline-offset-4 hover:text-on-primary-fixed transition-colors">Improve Profile</button>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-[120px] opacity-10 group-hover:scale-110 transition-transform duration-500" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+<!-- Jobs List -->
+<div class="lg:col-span-9 space-y-md">
+<!-- Job Card 1 -->
+<div class="group bg-surface-container-lowest p-md md:p-lg rounded-xl border border-outline-variant shadow-sm hover:shadow-md hover:border-secondary/30 transition-all duration-300 flex flex-col md:flex-row md:items-center gap-md">
+<div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0 border border-outline-variant group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="token">token</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-sm mb-1">
+<h3 class="font-title-lg text-title-lg text-primary truncate">Senior Product Designer</h3>
+<span class="px-3 py-0.5 rounded-full bg-secondary-container/20 text-on-secondary-container font-label-sm text-label-sm uppercase tracking-wider">Shortlisted</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-md gap-y-1 text-on-surface-variant font-body-md">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="apartment">apartment</span>
+                                TechFlow Interactive
+                            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+                                Applied Oct 24, 2023
+                            </span>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-md pt-md md:pt-0 border-t md:border-t-0 border-outline-variant/50">
+<div class="text-right hidden md:block">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-tighter">Current Step</p>
+<p class="font-bold text-secondary">Final Interview</p>
+</div>
+<button class="md:p-3 p-2 bg-secondary text-on-secondary rounded-lg font-label-lg text-label-lg hover:bg-on-secondary-fixed transition-colors active:scale-95 duration-150">
+                            View Details
+                        </button>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="group bg-surface-container-lowest p-md md:p-lg rounded-xl border border-outline-variant shadow-sm hover:shadow-md hover:border-secondary/30 transition-all duration-300 flex flex-col md:flex-row md:items-center gap-md">
+<div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0 border border-outline-variant group-hover:scale-105 transition-transform overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist logo of a stylized mountain peak inside a hexagon, representing stability and growth. The logo uses a professional palette of deep blue and slate grey, presented as a high-quality vector-style icon on a light grey background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkdOIX8zNc193LWxfy2jfenNvIv_WwU-aRdeTqR_aL08_S4-OX_8FkAgFyJPuQyudf28HVM-frpnlCZX-DZEcbq2NUU066qodc3Lzm_GCQUZXeiYhaaPoiX2Y1jOMvi2VSPRKSF57CbO3uFTaO1zYc_qUVAGgOA_mKTBo9Ni_xtMdqKMDf4ig8olcm9rXZ5zrrsA9daPvgkJSVrT37TJrgDkU1FiofNWU0FWk6jK9f53RWSsF-nIfW2Q">
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-sm mb-1">
+<h3 class="font-title-lg text-title-lg text-primary truncate">Lead Systems Architect</h3>
+<span class="px-3 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Under Review</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-md gap-y-1 text-on-surface-variant font-body-md">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="apartment">apartment</span>
+                                Alpine Infrastructure
+                            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+                                Applied Oct 22, 2023
+                            </span>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-md pt-md md:pt-0 border-t md:border-t-0 border-outline-variant/50">
+<div class="text-right hidden md:block">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-tighter">Current Step</p>
+<p class="font-bold text-on-surface">Screening</p>
+</div>
+<button class="md:p-3 p-2 bg-secondary text-on-secondary rounded-lg font-label-lg text-label-lg hover:bg-on-secondary-fixed transition-colors active:scale-95 duration-150">
+                            View Details
+                        </button>
+</div>
+</div>
+<!-- Job Card 3 -->
+<div class="group bg-surface-container-lowest p-md md:p-lg rounded-xl border border-outline-variant shadow-sm hover:shadow-md hover:border-secondary/30 transition-all duration-300 flex flex-col md:flex-row md:items-center gap-md">
+<div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0 border border-outline-variant group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="hub">hub</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-sm mb-1">
+<h3 class="font-title-lg text-title-lg text-primary truncate">Marketing Coordinator</h3>
+<span class="px-3 py-0.5 rounded-full bg-primary-container/10 text-on-primary-container font-label-sm text-label-sm uppercase tracking-wider">Applied</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-md gap-y-1 text-on-surface-variant font-body-md">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="apartment">apartment</span>
+                                Nexus Media Group
+                            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+                                Applied Oct 20, 2023
+                            </span>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-md pt-md md:pt-0 border-t md:border-t-0 border-outline-variant/50">
+<div class="text-right hidden md:block">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-tighter">Current Step</p>
+<p class="font-bold text-on-surface">Queue</p>
+</div>
+<button class="md:p-3 p-2 bg-secondary text-on-secondary rounded-lg font-label-lg text-label-lg hover:bg-on-secondary-fixed transition-colors active:scale-95 duration-150">
+                            View Details
+                        </button>
+</div>
+</div>
+<!-- Job Card 4 (Rejected/Closed style) -->
+<div class="group bg-surface-container-low opacity-70 p-md md:p-lg rounded-xl border border-outline-variant flex flex-col md:flex-row md:items-center gap-md">
+<div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0 border border-outline-variant">
+<span class="material-symbols-outlined text-outline text-[32px]" data-icon="work_off">work_off</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-sm mb-1">
+<h3 class="font-title-lg text-title-lg text-on-surface-variant truncate">UX Researcher</h3>
+<span class="px-3 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm uppercase tracking-wider">Closed</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-md gap-y-1 text-on-surface-variant font-body-md">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="apartment">apartment</span>
+                                Visionary Labs
+                            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+                                Applied Oct 15, 2023
+                            </span>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-md pt-md md:pt-0 border-t md:border-t-0 border-outline-variant/50">
+<div class="text-right hidden md:block">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-tighter">Result</p>
+<p class="font-bold text-error">Position Filled</p>
+</div>
+<button class="md:p-3 p-2 bg-surface-variant text-on-surface-variant rounded-lg font-label-lg text-label-lg hover:bg-outline-variant transition-colors active:scale-95 duration-150">
+                            View Feedback
+                        </button>
+</div>
+</div>
+<!-- Load More -->
+<div class="flex justify-center py-md">
+<button class="px-xl py-3 border border-secondary text-secondary rounded-full font-label-lg text-label-lg hover:bg-secondary/5 transition-all active:scale-95">
+                        Load Earlier Applications
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface shadow-sm border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="work_history" style="font-variation-settings: 'FILL' 1;">work_history</span>
+<span class="font-label-sm text-label-sm">Applied</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential for JS based effects if needed
+            });
+        });
+
+        // Filter button toggle logic (UX Placeholder)
+        const filterBtns = document.querySelectorAll('.filter-pill');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('bg-primary');
+                btn.classList.toggle('text-on-primary');
+            });
+        });
+    </script>
+</body></html>

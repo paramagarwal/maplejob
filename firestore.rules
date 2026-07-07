@@ -1,0 +1,54 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Users Collection Rules
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isOwner(userId) || isAdmin();
+      
+      // Sub-collection of Notifications for each user
+      match /notifications/{notifId} {
+        allow read: if isOwner(userId) || isAdmin();
+        allow update: if isOwner(userId) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isRead']);
+        allow create, delete: if isAdmin();
+      }
+    }
+
+    // Jobs Collection Rules
+    match /jobs/{jobId} {
+      // Anyone can read active jobs; only admins can read draft/inactive jobs or write/modify postings
+      allow read: if resource.data.isActive == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // Applications Collection Rules
+    match /applications/{appId} {
+      // Candidates can read their own applications
+      allow read: if isAuthenticated() && (resource.data.applicantId == request.auth.uid || isAdmin());
+      
+      // Candidates can submit new applications
+      allow create: if isAuthenticated() && request.resource.data.applicantId == request.auth.uid;
+      
+      // Only admins can update status or notes
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+  }
+}

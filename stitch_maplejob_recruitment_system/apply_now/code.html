@@ -1,0 +1,431 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Submit Application | MapleJob</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#a7c8ff",
+                    "on-secondary-fixed": "#001b3e",
+                    "primary": "#001e40",
+                    "surface-tint": "#3a5f94",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#001b3c",
+                    "tertiary-container": "#3e2171",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#43474f",
+                    "secondary": "#005cba",
+                    "on-secondary-container": "#002d61",
+                    "surface-container-high": "#e6e8ea",
+                    "tertiary-fixed-dim": "#d3bbff",
+                    "on-tertiary-fixed": "#260059",
+                    "on-background": "#191c1e",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#003366",
+                    "on-tertiary-container": "#aa8ce2",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container": "#eceef0",
+                    "primary-fixed": "#d5e3ff",
+                    "on-tertiary-fixed-variant": "#533786",
+                    "surface-bright": "#f7f9fb",
+                    "outline": "#737780",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e0e3e5",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-primary-container": "#799dd6",
+                    "tertiary": "#28035b",
+                    "on-secondary-fixed-variant": "#00458e",
+                    "on-primary-fixed-variant": "#1f477b",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "surface-dim": "#d8dadc",
+                    "error-container": "#ffdad6",
+                    "background": "#f7f9fb",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#a7c8ff",
+                    "surface": "#f7f9fb",
+                    "inverse-surface": "#2d3133",
+                    "secondary-fixed": "#d7e3ff",
+                    "tertiary-fixed": "#ebddff",
+                    "secondary-fixed-dim": "#aac7ff",
+                    "outline-variant": "#c3c6d1",
+                    "secondary-container": "#5095fe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "margin-desktop": "32px",
+                    "base": "4px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-transition { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar (Suppressed for focused task, replaced with Title Bar) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-md h-16 bg-primary text-on-primary">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-primary-container/10 rounded-full transition-transform active:scale-95" onclick="window.history.back()">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold">Apply for Senior UX Designer</h1>
+</div>
+<div class="flex items-center gap-3">
+<span class="hidden md:block font-label-lg text-label-lg opacity-70">Step <span id="current-step-num">1</span> of 3</span>
+<div class="w-24 h-2 bg-primary-container/30 rounded-full overflow-hidden hidden md:block">
+<div class="h-full bg-secondary-container w-1/3 transition-all duration-500" id="progress-bar"></div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-12 px-4 md:px-margin-desktop max-w-[1200px] mx-auto">
+<!-- Step Indicators (Mobile) -->
+<div class="flex md:hidden justify-between items-center mb-8 px-2">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold mb-1" id="step-dot-1">1</div>
+<span class="text-[10px] uppercase font-bold tracking-wider">Details</span>
+</div>
+<div class="flex-1 h-[2px] bg-outline-variant mx-2 mb-6"></div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold mb-1" id="step-dot-2">2</div>
+<span class="text-[10px] uppercase font-bold tracking-wider opacity-50">Resume</span>
+</div>
+<div class="flex-1 h-[2px] bg-outline-variant mx-2 mb-6"></div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold mb-1" id="step-dot-3">3</div>
+<span class="text-[10px] uppercase font-bold tracking-wider opacity-50">Review</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Left Column: Form Steps -->
+<div class="lg:col-span-8 space-y-lg">
+<!-- STEP 1: Personal Details -->
+<section class="step-transition block" id="step-1">
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant">
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg mb-2">Review Personal Details</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Verify your information for the hiring team at MapleHub Realty.</p>
+</div>
+<form class="space-y-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-1">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-1">Full Name</label>
+<input class="bg-surface-container-low border-none rounded-lg p-3 font-body-lg text-body-lg focus:ring-2 focus:ring-secondary transition-all" type="text" value="Alexander Thompson">
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-1">Email Address</label>
+<input class="bg-surface-container-low border-none rounded-lg p-3 font-body-lg text-body-lg focus:ring-2 focus:ring-secondary transition-all" type="email" value="alex.thompson@uxdesign.com">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-1">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-1">Phone Number</label>
+<input class="bg-surface-container-low border-none rounded-lg p-3 font-body-lg text-body-lg focus:ring-2 focus:ring-secondary transition-all" type="tel" value="+1 (555) 012-3456">
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-1">Current Role</label>
+<input class="bg-surface-container-low border-none rounded-lg p-3 font-body-lg text-body-lg focus:ring-2 focus:ring-secondary transition-all" type="text" value="Senior Product Designer">
+</div>
+</div>
+<div class="flex flex-col gap-1 pt-2">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-1">LinkedIn Profile (Optional)</label>
+<div class="relative">
+<span class="absolute left-3 top-3.5 material-symbols-outlined text-on-surface-variant text-md">link</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-3 pl-10 font-body-lg text-body-lg focus:ring-2 focus:ring-secondary transition-all" placeholder="https://linkedin.com/in/username" type="url">
+</div>
+</div>
+</form>
+</div>
+</section>
+<!-- STEP 2: Resume Selection (Hidden by default) -->
+<section class="step-transition hidden translate-y-4 opacity-0" id="step-2">
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant">
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg mb-2">Resume &amp; Portfolio</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Select how you'd like to showcase your experience.</p>
+</div>
+<div class="space-y-md">
+<!-- Existing Resume Card -->
+<div class="group relative border-2 border-secondary bg-secondary-fixed/20 p-md rounded-xl cursor-pointer transition-all hover:bg-secondary-fixed/30">
+<div class="flex items-center gap-md">
+<div class="bg-secondary p-3 rounded-lg text-on-secondary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-md text-title-md font-bold">Alexander_UX_Senior_2024.pdf</h4>
+<p class="font-label-sm text-label-sm opacity-70">Updated 2 days ago • 2.4 MB</p>
+</div>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Upload Alternative -->
+<div class="border-2 border-dashed border-outline-variant p-xl rounded-xl flex flex-col items-center justify-center gap-md hover:border-secondary hover:bg-surface-container-low transition-all group">
+<div class="bg-surface-container-high p-4 rounded-full group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary scale-150">upload_file</span>
+</div>
+<div class="text-center">
+<p class="font-title-md text-title-md font-bold">Upload a new resume</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">PDF, DOCX up to 10MB</p>
+</div>
+<button class="bg-primary text-on-primary px-lg py-2 rounded-full font-label-lg text-label-lg transition-transform active:scale-95">Browse Files</button>
+</div>
+</div>
+</div>
+</section>
+<!-- STEP 3: Final Review (Hidden by default) -->
+<section class="step-transition hidden translate-y-4 opacity-0" id="step-3">
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant">
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg mb-2">Final Review</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Please confirm your application details before submitting.</p>
+</div>
+<div class="space-y-lg">
+<!-- Bento Review Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="bg-surface-container-low p-md rounded-xl">
+<h4 class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2">Contact Info</h4>
+<p class="font-title-md text-title-md font-bold">Alexander Thompson</p>
+<p class="font-body-md text-body-md">+1 (555) 012-3456</p>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl">
+<h4 class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-2">Selected Resume</h4>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">description</span>
+<p class="font-title-md text-title-md font-bold truncate">Alexander_UX_Senior_2024.pdf</p>
+</div>
+</div>
+</div>
+<div class="bg-primary-container/10 p-md rounded-xl border border-primary-container/20">
+<h4 class="font-label-sm text-label-sm uppercase tracking-wider text-primary mb-2">Submission Note</h4>
+<textarea class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-body-md resize-none h-24" placeholder="Add a short message for the recruiter (Optional)"></textarea>
+</div>
+<div class="flex items-start gap-3 p-2">
+<input class="mt-1 rounded text-secondary focus:ring-secondary" id="terms" type="checkbox">
+<label class="font-label-lg text-label-lg text-on-surface-variant" for="terms">I agree to MapleJob's Terms of Service and Privacy Policy regarding my application data.</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Navigation Controls -->
+<div class="flex justify-between items-center pt-md">
+<button class="hidden font-label-lg text-label-lg text-primary flex items-center gap-2 px-lg py-3 rounded-xl hover:bg-surface-container-high transition-all active:scale-95" id="prev-btn">
+<span class="material-symbols-outlined">chevron_left</span>
+                        Back
+                    </button>
+<div class="flex-1"></div>
+<button class="bg-secondary text-on-secondary font-label-lg text-label-lg flex items-center gap-2 px-xl py-3 rounded-xl shadow-lg hover:bg-on-secondary-container transition-all active:scale-95 group" id="next-btn">
+                        Next Step
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+<button class="hidden bg-secondary text-on-secondary font-label-lg text-label-lg flex items-center gap-2 px-xl py-3 rounded-xl shadow-lg hover:bg-on-secondary-container transition-all active:scale-95 animate-pulse" id="submit-btn">
+                        Submit Application
+                        <span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Context/Sidebar -->
+<div class="lg:col-span-4 space-y-lg">
+<!-- Job Summary Card -->
+<div class="bg-surface-container-high/50 p-lg rounded-2xl border border-outline-variant glass-panel sticky top-24">
+<div class="flex items-start gap-md mb-md">
+<div class="w-16 h-16 rounded-xl bg-white flex items-center justify-center shadow-sm shrink-0 overflow-hidden">
+<img class="w-10 h-10 object-contain" data-alt="A clean, corporate tech logo featuring a minimalist stylized maple leaf in deep navy blue, set against a pristine white background. Professional, modern, and high-end aesthetic for a premium recruitment brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC994-c-Uv5sIwi6I13zO7abfrNAuIuIRbjZwdVI2fZ4q0MAkx_UVazWxsQ9yPNfGOFSNsfPuHCc-1zxicej_UpSdfgR_XQKN88DC7lg5bylTchz-GoTW4mT0-IvA0dUX58h79OtnZpegNzz5qwSuedRJ1278N5XH_SIeQVaJ6ze0mjVA5RTiCkptz_o2GZVxH96aq2KFH37qjw3P1GPqSpRGfDzC5TDhvsZY9GjdAVqXlVnJH5O7OmCw">
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg font-bold leading-tight">Senior UX Designer</h3>
+<p class="font-body-md text-body-md text-secondary font-semibold">MapleHub Realty</p>
+</div>
+</div>
+<div class="space-y-3 mb-lg">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="font-label-lg text-label-lg">Toronto, ON (Remote Friendly)</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">payments</span>
+<span class="font-label-lg text-label-lg">$140k – $180k • Full-time</span>
+</div>
+</div>
+<div class="border-t border-outline-variant pt-lg">
+<h4 class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mb-3">Application Tips</h4>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary shrink-0">lightbulb</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Highlight your experience with <b>Real Estate tech</b> or high-traffic platforms.</p>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary shrink-0">verified_user</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Double-check that your portfolio link is <b>publicly accessible</b>.</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- Ad/Promo (Asymmetric Layout element) -->
+<div class="relative bg-primary-container text-on-primary-container p-lg rounded-2xl overflow-hidden group">
+<div class="relative z-10">
+<h4 class="font-title-md text-title-md font-bold mb-1">MapleJob Premium</h4>
+<p class="font-body-md text-body-md opacity-80 mb-4">See how you rank against 45 other applicants for this role.</p>
+<button class="font-label-lg text-label-lg bg-secondary-container text-on-secondary-container px-lg py-2 rounded-full hover:scale-105 transition-transform">Learn More</button>
+</div>
+<!-- Background aesthetic element -->
+<div class="absolute -right-4 -bottom-4 w-32 h-32 bg-secondary opacity-20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Success Modal (Hidden) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" id="success-modal">
+<div class="bg-surface-container-lowest max-w-md w-full p-xl rounded-3xl text-center shadow-2xl scale-90 transition-transform duration-300">
+<div class="w-20 h-20 bg-secondary-fixed/30 rounded-full flex items-center justify-center mx-auto mb-lg">
+<span class="material-symbols-outlined text-secondary text-display-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-2">Application Sent!</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl">Good luck, Alexander! MapleHub Realty has received your application. We'll notify you via email as soon as they review it.</p>
+<button class="w-full bg-primary text-on-primary py-lg rounded-xl font-title-md text-title-md hover:shadow-lg transition-all active:scale-95" onclick="window.location.reload()">Return to Dashboard</button>
+</div>
+</div>
+<script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const currentStepNum = document.getElementById('current-step-num');
+        const modal = document.getElementById('success-modal');
+
+        function updateUI() {
+            // Update progress bar
+            progressBar.style.width = `${(currentStep / totalSteps) * 100}%`;
+            currentStepNum.innerText = currentStep;
+
+            // Update sections visibility with transitions
+            for (let i = 1; i <= totalSteps; i++) {
+                const section = document.getElementById(`step-${i}`);
+                const dot = document.getElementById(`step-dot-${i}`);
+                
+                if (i === currentStep) {
+                    section.classList.remove('hidden');
+                    setTimeout(() => {
+                        section.classList.remove('opacity-0', 'translate-y-4');
+                    }, 50);
+                    
+                    if(dot) {
+                        dot.classList.remove('bg-surface-container-highest', 'text-on-surface-variant');
+                        dot.classList.add('bg-secondary', 'text-on-secondary');
+                    }
+                } else {
+                    section.classList.add('hidden', 'opacity-0', 'translate-y-4');
+                    if(dot && i > currentStep) {
+                        dot.classList.add('bg-surface-container-highest', 'text-on-surface-variant');
+                        dot.classList.remove('bg-secondary', 'text-on-secondary');
+                    }
+                }
+            }
+
+            // Button controls
+            if (currentStep === 1) {
+                prevBtn.classList.add('hidden');
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+            } else if (currentStep === totalSteps) {
+                nextBtn.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+                prevBtn.classList.remove('hidden');
+            } else {
+                prevBtn.classList.remove('hidden');
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+            }
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateUI();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                updateUI();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        submitBtn.addEventListener('click', () => {
+            // Show Success Modal
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.children[0].classList.remove('scale-90');
+            }, 10);
+        });
+
+        // Initialize UI
+        updateUI();
+    </script>
+</body></html>
