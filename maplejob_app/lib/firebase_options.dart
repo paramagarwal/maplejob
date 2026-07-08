@@ -22,19 +22,18 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSy012345678901234567890123456789012',
-    appId: '1:123456789012:android:a1b2c3d4e5f6g7h8',
-    messagingSenderId: '123456789012',
-    projectId: 'maplejob-recruitment',
-    storageBucket: 'maplejob-recruitment.appspot.com',
+    apiKey: 'AIzaSyDjMU7-Q4RfRfs17OiZrZoDRwKOi4bxDHI',
+    appId: '1:9546364908:android:831db018aedea84e6372c9',
+    messagingSenderId: '9546364908',
+    projectId: 'maplejob-beb1d',
+    storageBucket: 'maplejob-beb1d.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSy012345678901234567890123456789013',
-    appId: '1:123456789012:ios:a1b2c3d4e5f6g7h8',
-    messagingSenderId: '123456789012',
-    projectId: 'maplejob-recruitment',
-    storageBucket: 'maplejob-recruitment.appspot.com',
+    apiKey: 'AIzaSyB_EitNMCjRFA8feMJscOh3jedKnbbTHos',
+    appId: '1:9546364908:ios:32dea5eb110fd6046372c9',
+    messagingSenderId: '9546364908',
+    projectId: 'maplejob-beb1d',
+    storageBucket: 'maplejob-beb1d.firebasestorage.app',
     iosBundleId: 'com.maplehubrealty.maplejob.maplejobApp',
   );
 }
