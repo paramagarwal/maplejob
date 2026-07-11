@@ -13,12 +13,12 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA_PLACEHOLDER_WEB_API_KEY_MAPLEJOB',
-    appId: '1:123456789012:web:a1b2c3d4e5f6g7h8',
-    messagingSenderId: '123456789012',
-    projectId: 'maplejob-recruitment',
-    authDomain: 'maplejob-recruitment.firebaseapp.com',
-    storageBucket: 'maplejob-recruitment.appspot.com',
-    measurementId: 'G-MAPLEJOBWEB',
+    apiKey: 'AIzaSyDEuOUIn0C5SSPgQHBvOaDgxqb48sqEe5A',
+    appId: '1:9546364908:web:1240b77275b88bdd6372c9',
+    messagingSenderId: '9546364908',
+    projectId: 'maplejob-beb1d',
+    authDomain: 'maplejob-beb1d.firebaseapp.com',
+    storageBucket: 'maplejob-beb1d.firebasestorage.app',
+    measurementId: 'G-G18WEYXZ09',
   );
 }

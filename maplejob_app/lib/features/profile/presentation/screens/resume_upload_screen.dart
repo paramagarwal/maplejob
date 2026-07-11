@@ -27,11 +27,7 @@ class _ResumeUploadScreenState extends ConsumerState<ResumeUploadScreen> {
     });
 
     try {
-      final result = await FilePicker.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['pdf'],
-        withData: true, // retrieves file bytes immediately (ideal for web/small files)
-      );
+      final result = await ref.read(filePickerServiceProvider).pickPdf();
 
       if (result != null && result.files.isNotEmpty) {
         final file = result.files.first;

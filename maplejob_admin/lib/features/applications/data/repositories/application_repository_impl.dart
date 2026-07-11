@@ -3,18 +3,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../domain/entities/job_application.dart';
 import '../../domain/repositories/application_repository.dart';
 import '../models/job_application_model.dart';
+import '../services/application_firestore_service.dart';
 
 class ApplicationRepositoryImpl implements ApplicationRepository {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final ApplicationFirestoreService _firestoreService;
 
-  ApplicationRepositoryImpl();
+  ApplicationRepositoryImpl(this._firestoreService);
 
   @override
   Stream<List<JobApplication>> getApplicationsByApplicant(String applicantId) {
-    return _firestore
-        .collection('applications')
-        .where('applicantId', isEqualTo: applicantId)
-        .snapshots()
+    return _firestoreService
+        .getApplicationsByApplicant(applicantId)
         .map((snapshot) {
       return snapshot.docs.map((doc) {
         return JobApplicationModel.fromMap(doc.data(), doc.id);
@@ -24,11 +23,7 @@ class ApplicationRepositoryImpl implements ApplicationRepository {
 
   @override
   Stream<List<JobApplication>> getAllApplications() {
-    return _firestore
-        .collection('applications')
-        .orderBy('appliedAt', descending: true)
-        .snapshots()
-        .map((snapshot) {
+    return _firestoreService.getAllApplications().map((snapshot) {
       return snapshot.docs.map((doc) {
         return JobApplicationModel.fromMap(doc.data(), doc.id);
       }).toList();
@@ -53,7 +48,7 @@ class ApplicationRepositoryImpl implements ApplicationRepository {
       updatedAt: DateTime.now(),
       notes: application.notes,
     );
-    await _firestore.collection('applications').add(model.toMap());
+    await _firestoreService.submitApplication(model.toMap());
   }
 
   @override
@@ -65,10 +60,10 @@ class ApplicationRepositoryImpl implements ApplicationRepository {
     if (notes.isNotEmpty) {
       data['notes'] = notes;
     }
-    await _firestore.collection('applications').doc(id).update(data);
+    await _firestoreService.updateApplicationStatus(id, data);
 
     try {
-      final appDoc = await _firestore.collection('applications').doc(id).get();
+      final appDoc = await _firestoreService.getApplicationById(id);
       if (appDoc.exists && appDoc.data() != null) {
         final applicantId = appDoc.data()!['applicantId'] as String?;
         final jobTitle = appDoc.data()!['jobTitle'] as String?;
@@ -80,11 +75,7 @@ class ApplicationRepositoryImpl implements ApplicationRepository {
             'isRead': false,
             'timestamp': Timestamp.fromDate(DateTime.now()),
           };
-          await _firestore
-              .collection('users')
-              .doc(applicantId)
-              .collection('notifications')
-              .add(notifData);
+          await _firestoreService.createNotification(applicantId, notifData);
         }
       }
     } catch (e) {

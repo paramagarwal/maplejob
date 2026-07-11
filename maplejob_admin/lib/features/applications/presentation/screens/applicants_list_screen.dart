@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import '../../../../app/config/theme.dart';
-import '../../../../app/widgets/admin_drawer.dart';
+import '../../../../app/widgets/responsive_admin_layout.dart';
 import '../providers/application_provider.dart';
 
 class ApplicantsListScreen extends ConsumerStatefulWidget {
@@ -29,9 +29,8 @@ class _ApplicantsListScreenState extends ConsumerState<ApplicantsListScreen> {
   Widget build(BuildContext context) {
     final applicationsState = ref.watch(allApplicationsStreamProvider);
 
-    return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
-      drawer: const AdminDrawer(activeRoute: '/applicants'),
+    return ResponsiveAdminLayout(
+      activeRoute: '/applicants',
       appBar: AppBar(
         title: const Text('Applicant Tracking', style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: AppTheme.primaryColor,

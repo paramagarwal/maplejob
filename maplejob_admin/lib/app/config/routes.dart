@@ -5,6 +5,7 @@ import '../../features/jobs/presentation/screens/jobs_list_screen.dart';
 import '../../features/jobs/presentation/screens/job_form_screen.dart';
 import '../../features/applications/presentation/screens/applicants_list_screen.dart';
 import '../../features/applications/presentation/screens/applicant_details_screen.dart';
+import '../../features/dashboard/presentation/screens/dashboard_screen.dart';
 
 class PlaceholderScreen extends StatelessWidget {
   final String title;
@@ -33,7 +34,7 @@ final GoRouter adminRouter = GoRouter(
     ),
     GoRoute(
       path: '/dashboard',
-      builder: (context, state) => const PlaceholderScreen(title: 'Dashboard'),
+      builder: (context, state) => const DashboardScreen(),
     ),
     GoRoute(
       path: '/jobs',
@@ -60,6 +61,10 @@ final GoRouter adminRouter = GoRouter(
         final id = state.pathParameters['id'] ?? '';
         return ApplicantDetailsScreen(applicationId: id);
       },
+    ),
+    GoRoute(
+      path: '/notifications',
+      builder: (context, state) => const PlaceholderScreen(title: 'Notifications'),
     ),
     GoRoute(
       path: '/settings',

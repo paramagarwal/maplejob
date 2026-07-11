@@ -1,20 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../domain/entities/job_entity.dart';
 import '../../domain/repositories/job_repository.dart';
 import '../models/job_model.dart';
+import '../services/job_firestore_service.dart';
 
 class JobRepositoryImpl implements JobRepository {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final JobFirestoreService _firestoreService;
 
-  JobRepositoryImpl();
+  JobRepositoryImpl(this._firestoreService);
 
   @override
   Stream<List<JobEntity>> getJobs() {
-    return _firestore
-        .collection('jobs')
-        .orderBy('createdAt', descending: true)
-        .snapshots()
-        .map((snapshot) {
+    return _firestoreService.getJobsStream().map((snapshot) {
       return snapshot.docs.map((doc) {
         return JobModel.fromMap(doc.data(), doc.id);
       }).toList();
@@ -23,7 +19,7 @@ class JobRepositoryImpl implements JobRepository {
 
   @override
   Future<JobEntity?> getJobById(String id) async {
-    final doc = await _firestore.collection('jobs').doc(id).get();
+    final doc = await _firestoreService.getJobById(id);
     if (doc.exists && doc.data() != null) {
       return JobModel.fromMap(doc.data()!, doc.id);
     }
@@ -57,7 +53,7 @@ class JobRepositoryImpl implements JobRepository {
       updatedAt: DateTime.now(),
       isActive: job.isActive,
     );
-    await _firestore.collection('jobs').add(model.toMap());
+    await _firestoreService.createJob(model.toMap());
   }
 
   @override
@@ -87,11 +83,11 @@ class JobRepositoryImpl implements JobRepository {
       updatedAt: DateTime.now(),
       isActive: job.isActive,
     );
-    await _firestore.collection('jobs').doc(job.id).update(model.toMap());
+    await _firestoreService.updateJob(job.id, model.toMap());
   }
 
   @override
   Future<void> deleteJob(String id) async {
-    await _firestore.collection('jobs').doc(id).delete();
+    await _firestoreService.deleteJob(id);
   }
 }

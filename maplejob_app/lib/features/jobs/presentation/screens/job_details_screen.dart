@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import '../../../../app/config/theme.dart';
+import '../../../auth/presentation/providers/auth_provider.dart';
 import '../../domain/entities/job_entity.dart';
 import '../providers/job_provider.dart';
 import '../../../profile/presentation/providers/profile_provider.dart';
@@ -57,6 +58,41 @@ class _JobDetailsScreenState extends ConsumerState<JobDetailsScreen> {
     }
   }
 
+  Future<void> _toggleSaveJob(String jobId, bool isSaved) async {
+    final authUser = ref.read(authControllerProvider).value;
+    if (authUser == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please log in to save jobs.')),
+      );
+      return;
+    }
+
+    try {
+      if (isSaved) {
+        await ref.read(unsaveJobUseCaseProvider).call(authUser.uid, jobId);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Job removed from saved list.')),
+          );
+        }
+      } else {
+        await ref.read(saveJobUseCaseProvider).call(authUser.uid, jobId);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Job saved successfully.')),
+          );
+        }
+      }
+      setState(() {});
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to update saved job: $e')),
+        );
+      }
+    }
+  }
+
   Future<void> _applyForJob() async {
     final profile = ref.read(profileNotifierProvider).value;
     if (profile == null) {
@@ -94,7 +130,7 @@ class _JobDetailsScreenState extends ConsumerState<JobDetailsScreen> {
       return;
     }
 
-    // Profile completion requirements check (e.g. must be >= 50% or have phone/email filled)
+    // Profile completion requirements check
     if (profile.fullName.isEmpty || profile.phone.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please complete your full name and phone number in your profile before applying.')),
@@ -103,14 +139,13 @@ class _JobDetailsScreenState extends ConsumerState<JobDetailsScreen> {
       return;
     }
 
-    // Submit immediate application flow (will be wired up to Application repository in Phase 7)
     setState(() {
       _isLoading = true;
     });
 
     try {
-      final appRepo = ref.read(applicationRepositoryProvider);
-      await appRepo.submitApplication(
+      final submitApplication = ref.read(submitApplicationUseCaseProvider);
+      await submitApplication(
         JobApplication(
           id: '',
           jobId: _job!.id,
@@ -188,6 +223,27 @@ class _JobDetailsScreenState extends ConsumerState<JobDetailsScreen> {
         title: Text(_job!.title, style: const TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: AppTheme.primaryColor,
         foregroundColor: Colors.white,
+        actions: [
+          ref.watch(savedJobIdsStreamProvider).when(
+                data: (savedIds) {
+                  final isSaved = savedIds.contains(_job!.id);
+                  return IconButton(
+                    icon: Icon(
+                      isSaved ? Icons.bookmark : Icons.bookmark_border,
+                      color: Colors.white,
+                    ),
+                    onPressed: () => _toggleSaveJob(_job!.id, isSaved),
+                  );
+                },
+                loading: () => const SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                ),
+                error: (e, s) => const SizedBox(),
+              ),
+          const SizedBox(width: 16),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),

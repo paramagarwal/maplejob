@@ -10,4 +10,10 @@ abstract class JobRepository {
   Future<void> updateJob(JobEntity job);
   
   Future<void> deleteJob(String id);
+
+  Future<void> saveJob(String userId, String jobId);
+
+  Future<void> unsaveJob(String userId, String jobId);
+
+  Stream<List<String>> getSavedJobIds(String userId);
 }

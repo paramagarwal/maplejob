@@ -153,7 +153,12 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                           controller: startYearCtrl,
                           decoration: const InputDecoration(labelText: 'Start Year'),
                           keyboardType: TextInputType.number,
-                          validator: (v) => int.tryParse(v ?? '') == null ? 'Invalid year' : null,
+                          validator: (v) {
+                            final year = int.tryParse(v ?? '');
+                            if (year == null) return 'Invalid year';
+                            if (year < 1900 || year > DateTime.now().year + 10) return 'Invalid year range';
+                            return null;
+                          },
                         ),
                       ),
                       const SizedBox(width: 12.0),
@@ -162,7 +167,15 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                           controller: endYearCtrl,
                           decoration: const InputDecoration(labelText: 'End Year'),
                           keyboardType: TextInputType.number,
-                          validator: (v) => int.tryParse(v ?? '') == null ? 'Invalid year' : null,
+                          validator: (v) {
+                            final endYear = int.tryParse(v ?? '');
+                            if (endYear == null) return 'Invalid year';
+                            final startYear = int.tryParse(startYearCtrl.text);
+                            if (startYear != null && endYear < startYear) {
+                              return 'Cannot be before start';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                     ],
@@ -304,7 +317,15 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
               const SizedBox(height: 8.0),
               TextFormField(
                 controller: _phoneController,
-                validator: (v) => v!.isEmpty ? 'Field is required' : null,
+                validator: (v) {
+                  if (v == null || v.trim().isEmpty) {
+                    return 'Field is required';
+                  }
+                  if (!RegExp(r'^\+?[0-9\s\-()]{7,15}$').hasMatch(v.trim())) {
+                    return 'Please enter a valid phone number';
+                  }
+                  return null;
+                },
                 decoration: const InputDecoration(prefixIcon: Icon(Icons.phone_outlined), hintText: '+1 (555) 000-0000'),
               ),
               const SizedBox(height: 20.0),
@@ -373,6 +394,14 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
               const SizedBox(height: 8.0),
               TextFormField(
                 controller: _linkedinController,
+                validator: (v) {
+                  if (v == null || v.trim().isEmpty) return null;
+                  final url = v.trim().toLowerCase();
+                  if (!url.contains('linkedin.com/')) {
+                    return 'Please enter a valid LinkedIn URL';
+                  }
+                  return null;
+                },
                 decoration: const InputDecoration(prefixIcon: Icon(Icons.link_outlined), hintText: 'linkedin.com/in/username'),
               ),
               const SizedBox(height: 28.0),

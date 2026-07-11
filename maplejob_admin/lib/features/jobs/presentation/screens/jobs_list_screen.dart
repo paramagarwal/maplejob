@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../app/config/theme.dart';
 import '../../domain/entities/job_entity.dart';
 import '../providers/job_provider.dart';
-import '../../../../app/widgets/admin_drawer.dart';
+import '../../../../app/widgets/responsive_admin_layout.dart';
 
 class JobsListScreen extends ConsumerStatefulWidget {
   const JobsListScreen({super.key});
@@ -85,9 +85,8 @@ class _JobsListScreenState extends ConsumerState<JobsListScreen> {
   Widget build(BuildContext context) {
     final jobsState = ref.watch(jobsStreamProvider);
 
-    return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
-      drawer: const AdminDrawer(activeRoute: '/jobs'),
+    return ResponsiveAdminLayout(
+      activeRoute: '/jobs',
       appBar: AppBar(
         title: const Text('Job Management', style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: AppTheme.primaryColor,

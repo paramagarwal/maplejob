@@ -4,17 +4,44 @@ import '../../../auth/domain/entities/user_entity.dart';
 import '../../../auth/data/models/user_model.dart';
 import '../../domain/repositories/user_repository.dart';
 import '../../data/repositories/user_repository_impl.dart';
+import '../../domain/usecases/get_user_profile_usecase.dart';
+import '../../domain/usecases/update_user_profile_usecase.dart';
+import '../../domain/usecases/upload_resume_usecase.dart';
+import '../../../../app/services/file_picker_service.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 
 final userRepositoryProvider = Provider<UserRepository>((ref) {
   return UserRepositoryImpl();
 });
 
+final filePickerServiceProvider = Provider<FilePickerService>((ref) {
+  return FilePickerService();
+});
+
+final getUserProfileUseCaseProvider = Provider<GetUserProfileUseCase>((ref) {
+  return GetUserProfileUseCase(ref.watch(userRepositoryProvider));
+});
+
+final updateUserProfileUseCaseProvider = Provider<UpdateUserProfileUseCase>((ref) {
+  return UpdateUserProfileUseCase(ref.watch(userRepositoryProvider));
+});
+
+final uploadResumeUseCaseProvider = Provider<UploadResumeUseCase>((ref) {
+  return UploadResumeUseCase(ref.watch(userRepositoryProvider));
+});
+
 class ProfileNotifier extends StateNotifier<AsyncValue<UserEntity?>> {
-  final UserRepository _userRepository;
+  final GetUserProfileUseCase _getUserProfileUseCase;
+  final UpdateUserProfileUseCase _updateUserProfileUseCase;
+  final UploadResumeUseCase _uploadResumeUseCase;
   final Ref _ref;
 
-  ProfileNotifier(this._userRepository, this._ref) : super(const AsyncValue.loading()) {
+  ProfileNotifier(
+    this._getUserProfileUseCase,
+    this._updateUserProfileUseCase,
+    this._uploadResumeUseCase,
+    this._ref,
+  ) : super(const AsyncValue.loading()) {
     _init();
   }
 
@@ -46,7 +73,7 @@ class ProfileNotifier extends StateNotifier<AsyncValue<UserEntity?>> {
   Future<void> loadProfile(String uid) async {
     state = const AsyncValue.loading();
     try {
-      final profile = await _userRepository.getUserProfile(uid);
+      final profile = await _getUserProfileUseCase(uid);
       state = AsyncValue.data(profile);
     } catch (e, stack) {
       state = AsyncValue.error(e, stack);
@@ -56,7 +83,7 @@ class ProfileNotifier extends StateNotifier<AsyncValue<UserEntity?>> {
   Future<void> updateProfile(UserEntity updatedUser) async {
     state = const AsyncValue.loading();
     try {
-      await _userRepository.updateUserProfile(updatedUser);
+      await _updateUserProfileUseCase(updatedUser);
       state = AsyncValue.data(updatedUser);
     } catch (e, stack) {
       state = AsyncValue.error(e, stack);
@@ -70,12 +97,12 @@ class ProfileNotifier extends StateNotifier<AsyncValue<UserEntity?>> {
     
     state = const AsyncValue.loading();
     try {
-      final downloadUrl = await _userRepository.uploadResume(user.uid, filename, fileBytes);
+      final downloadUrl = await _uploadResumeUseCase(user.uid, filename, fileBytes);
       final updatedUser = (user as UserModel).copyWith(
         resumeUrl: downloadUrl,
         resumeName: filename,
       );
-      await _userRepository.updateUserProfile(updatedUser);
+      await _updateUserProfileUseCase(updatedUser);
       state = AsyncValue.data(updatedUser);
     } catch (e, stack) {
       state = AsyncValue.error(e, stack);
@@ -85,5 +112,10 @@ class ProfileNotifier extends StateNotifier<AsyncValue<UserEntity?>> {
 }
 
 final profileNotifierProvider = StateNotifierProvider<ProfileNotifier, AsyncValue<UserEntity?>>((ref) {
-  return ProfileNotifier(ref.watch(userRepositoryProvider), ref);
+  return ProfileNotifier(
+    ref.watch(getUserProfileUseCaseProvider),
+    ref.watch(updateUserProfileUseCaseProvider),
+    ref.watch(uploadResumeUseCaseProvider),
+    ref,
+  );
 });

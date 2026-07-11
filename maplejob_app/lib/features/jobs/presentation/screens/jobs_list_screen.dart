@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../app/config/theme.dart';
+import '../../../auth/presentation/providers/auth_provider.dart';
 import '../providers/job_provider.dart';
 import '../../../notifications/presentation/providers/notifications_provider.dart';
 
@@ -21,11 +22,58 @@ class _JobsListScreenState extends ConsumerState<JobsListScreen> {
   String _selectedEmploymentType = 'All';
   String _selectedWorkMode = 'All';
   String _selectedExperience = 'All';
+  String _selectedSalaryRange = 'All';
+  bool _showSavedOnly = false;
 
   @override
   void dispose() {
     _searchController.dispose();
     super.dispose();
+  }
+
+  int? _parseSalary(String salaryStr) {
+    try {
+      final parts = salaryStr.split('-');
+      final firstPart = parts[0].replaceAll(RegExp(r'[^\d]'), '');
+      if (firstPart.isEmpty) return null;
+      return int.tryParse(firstPart);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<void> _toggleSaveJob(String jobId, bool isSaved) async {
+    final authUser = ref.read(authControllerProvider).value;
+    if (authUser == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please log in to save jobs.')),
+      );
+      return;
+    }
+
+    try {
+      if (isSaved) {
+        await ref.read(unsaveJobUseCaseProvider).call(authUser.uid, jobId);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Job removed from saved list.')),
+          );
+        }
+      } else {
+        await ref.read(saveJobUseCaseProvider).call(authUser.uid, jobId);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Job saved successfully.')),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to update saved job: $e')),
+        );
+      }
+    }
   }
 
   void _showFiltersBottomSheet() {
@@ -39,96 +87,136 @@ class _JobsListScreenState extends ConsumerState<JobsListScreen> {
           builder: (context, setModalState) {
             return Container(
               padding: const EdgeInsets.all(24.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Filters', style: AppTheme.titleLg.copyWith(color: AppTheme.primaryColor, fontWeight: FontWeight.bold)),
-                      TextButton(
-                        onPressed: () {
-                          setModalState(() {
-                            _selectedEmploymentType = 'All';
-                            _selectedWorkMode = 'All';
-                            _selectedExperience = 'All';
-                          });
-                        },
-                        child: const Text('Reset All', style: TextStyle(color: AppTheme.secondaryColor)),
-                      ),
-                    ],
-                  ),
-                  const Divider(height: 24),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Filters', style: AppTheme.titleLg.copyWith(color: AppTheme.primaryColor, fontWeight: FontWeight.bold)),
+                        TextButton(
+                          onPressed: () {
+                            setModalState(() {
+                              _selectedEmploymentType = 'All';
+                              _selectedWorkMode = 'All';
+                              _selectedExperience = 'All';
+                              _selectedSalaryRange = 'All';
+                              _showSavedOnly = false;
+                            });
+                          },
+                          child: const Text('Reset All', style: TextStyle(color: AppTheme.secondaryColor)),
+                        ),
+                      ],
+                    ),
+                    const Divider(height: 24),
 
-                  // Job Type
-                  Text('Job Type', style: AppTheme.labelLg.copyWith(color: AppTheme.primaryColor)),
-                  const SizedBox(height: 8.0),
-                  Wrap(
-                    spacing: 8.0,
-                    children: ['All', 'Full-Time', 'Part-Time', 'Contract', 'Internship'].map((type) {
-                      final isSel = _selectedEmploymentType == type;
-                      return ChoiceChip(
-                        label: Text(type),
-                        selected: isSel,
-                        onSelected: (val) {
-                          if (val) {
-                            setModalState(() => _selectedEmploymentType = type);
-                          }
-                        },
-                      );
-                    }).toList(),
-                  ),
-                  const SizedBox(height: 16.0),
+                    // Job Type
+                    Text('Job Type', style: AppTheme.labelLg.copyWith(color: AppTheme.primaryColor)),
+                    const SizedBox(height: 8.0),
+                    Wrap(
+                      spacing: 8.0,
+                      children: ['All', 'Full-Time', 'Part-Time', 'Contract', 'Internship'].map((type) {
+                        final isSel = _selectedEmploymentType == type;
+                        return ChoiceChip(
+                          label: Text(type),
+                          selected: isSel,
+                          onSelected: (val) {
+                            if (val) {
+                              setModalState(() => _selectedEmploymentType = type);
+                            }
+                          },
+                        );
+                      }).toList(),
+                    ),
+                    const SizedBox(height: 16.0),
 
-                  // Work Mode
-                  Text('Work Mode', style: AppTheme.labelLg.copyWith(color: AppTheme.primaryColor)),
-                  const SizedBox(height: 8.0),
-                  Wrap(
-                    spacing: 8.0,
-                    children: ['All', 'On-site', 'Hybrid', 'Remote'].map((mode) {
-                      final isSel = _selectedWorkMode == mode;
-                      return ChoiceChip(
-                        label: Text(mode),
-                        selected: isSel,
-                        onSelected: (val) {
-                          if (val) {
-                            setModalState(() => _selectedWorkMode = mode);
-                          }
-                        },
-                      );
-                    }).toList(),
-                  ),
-                  const SizedBox(height: 16.0),
+                    // Work Mode
+                    Text('Work Mode', style: AppTheme.labelLg.copyWith(color: AppTheme.primaryColor)),
+                    const SizedBox(height: 8.0),
+                    Wrap(
+                      spacing: 8.0,
+                      children: ['All', 'On-site', 'Hybrid', 'Remote'].map((mode) {
+                        final isSel = _selectedWorkMode == mode;
+                        return ChoiceChip(
+                          label: Text(mode),
+                          selected: isSel,
+                          onSelected: (val) {
+                            if (val) {
+                              setModalState(() => _selectedWorkMode = mode);
+                            }
+                          },
+                        );
+                      }).toList(),
+                    ),
+                    const SizedBox(height: 16.0),
 
-                  // Experience level
-                  Text('Experience Level', style: AppTheme.labelLg.copyWith(color: AppTheme.primaryColor)),
-                  const SizedBox(height: 8.0),
-                  Wrap(
-                    spacing: 8.0,
-                    children: ['All', 'Entry-level', 'Mid-level', 'Senior'].map((exp) {
-                      final isSel = _selectedExperience == exp;
-                      return ChoiceChip(
-                        label: Text(exp),
-                        selected: isSel,
-                        onSelected: (val) {
-                          if (val) {
-                            setModalState(() => _selectedExperience = exp);
-                          }
-                        },
-                      );
-                    }).toList(),
-                  ),
-                  const SizedBox(height: 32.0),
+                    // Experience level
+                    Text('Experience Level', style: AppTheme.labelLg.copyWith(color: AppTheme.primaryColor)),
+                    const SizedBox(height: 8.0),
+                    Wrap(
+                      spacing: 8.0,
+                      children: ['All', 'Entry-level', 'Mid-level', 'Senior'].map((exp) {
+                        final isSel = _selectedExperience == exp;
+                        return ChoiceChip(
+                          label: Text(exp),
+                          selected: isSel,
+                          onSelected: (val) {
+                            if (val) {
+                              setModalState(() => _selectedExperience = exp);
+                            }
+                          },
+                        );
+                      }).toList(),
+                    ),
+                    const SizedBox(height: 16.0),
 
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {}); // trigger refresh of list
-                      Navigator.pop(context);
-                    },
-                    child: const Text('Apply Filters'),
-                  ),
-                ],
+                    // Salary Range
+                    Text('Salary Range', style: AppTheme.labelLg.copyWith(color: AppTheme.primaryColor)),
+                    const SizedBox(height: 8.0),
+                    Wrap(
+                      spacing: 8.0,
+                      children: ['All', 'Under \$50k', '\$50k - \$100k', '\$100k - \$150k', 'Over \$150k'].map((sal) {
+                        final isSel = _selectedSalaryRange == sal;
+                        return ChoiceChip(
+                          label: Text(sal),
+                          selected: isSel,
+                          onSelected: (val) {
+                            if (val) {
+                              setModalState(() => _selectedSalaryRange = sal);
+                            }
+                          },
+                        );
+                      }).toList(),
+                    ),
+                    const SizedBox(height: 16.0),
+
+                    // Saved Only Switch
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Show Saved Only', style: AppTheme.labelLg.copyWith(color: AppTheme.primaryColor)),
+                        Switch(
+                          value: _showSavedOnly,
+                          onChanged: (val) {
+                            setModalState(() => _showSavedOnly = val);
+                          },
+                          activeThumbColor: AppTheme.secondaryColor,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 32.0),
+
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {}); // trigger refresh of list
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Apply Filters'),
+                    ),
+                  ],
+                ),
               ),
             );
           },
@@ -199,7 +287,33 @@ class _JobsListScreenState extends ConsumerState<JobsListScreen> {
               }
             }
 
-            return matchesQuery && matchesCat && matchesType && matchesMode && matchesExp;
+            // Saved Only match helper
+            bool matchesSaved = true;
+            if (_showSavedOnly) {
+              final savedIds = ref.watch(savedJobIdsStreamProvider).value ?? [];
+              matchesSaved = savedIds.contains(job.id);
+            }
+
+            // Salary match helper
+            bool matchesSalary = true;
+            if (_selectedSalaryRange != 'All') {
+              final parsedVal = _parseSalary(job.salary);
+              if (parsedVal != null) {
+                if (_selectedSalaryRange == 'Under \$50k') {
+                  matchesSalary = parsedVal < 50000;
+                } else if (_selectedSalaryRange == '\$50k - \$100k') {
+                  matchesSalary = parsedVal >= 50000 && parsedVal <= 100000;
+                } else if (_selectedSalaryRange == '\$100k - \$150k') {
+                  matchesSalary = parsedVal >= 100000 && parsedVal <= 150000;
+                } else if (_selectedSalaryRange == 'Over \$150k') {
+                  matchesSalary = parsedVal > 150000;
+                }
+              } else {
+                matchesSalary = false;
+              }
+            }
+
+            return matchesQuery && matchesCat && matchesType && matchesMode && matchesExp && matchesSaved && matchesSalary;
           }).toList();
 
           return Column(
@@ -293,7 +407,11 @@ class _JobsListScreenState extends ConsumerState<JobsListScreen> {
                       '${filtered.length} Job${filtered.length == 1 ? "" : "s"} Found',
                       style: AppTheme.labelLg.copyWith(color: AppTheme.outlineColor, fontWeight: FontWeight.bold),
                     ),
-                    if (_selectedEmploymentType != 'All' || _selectedWorkMode != 'All' || _selectedExperience != 'All')
+                    if (_selectedEmploymentType != 'All' ||
+                        _selectedWorkMode != 'All' ||
+                        _selectedExperience != 'All' ||
+                        _selectedSalaryRange != 'All' ||
+                        _showSavedOnly)
                       Text(
                         'Filters Active',
                         style: AppTheme.labelSm.copyWith(color: AppTheme.secondaryColor, fontWeight: FontWeight.bold),
@@ -364,7 +482,30 @@ class _JobsListScreenState extends ConsumerState<JobsListScreen> {
                                             ],
                                           ),
                                         ),
-                                        const Icon(Icons.chevron_right, color: AppTheme.outlineColor),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            ref.watch(savedJobIdsStreamProvider).when(
+                                                  data: (savedIds) {
+                                                    final isSaved = savedIds.contains(job.id);
+                                                    return IconButton(
+                                                      icon: Icon(
+                                                        isSaved ? Icons.bookmark : Icons.bookmark_border,
+                                                        color: isSaved ? AppTheme.secondaryColor : AppTheme.outlineColor,
+                                                      ),
+                                                      onPressed: () => _toggleSaveJob(job.id, isSaved),
+                                                    );
+                                                  },
+                                                  loading: () => const SizedBox(
+                                                    width: 24,
+                                                    height: 24,
+                                                    child: CircularProgressIndicator(strokeWidth: 2),
+                                                  ),
+                                                  error: (e, s) => const SizedBox(),
+                                                ),
+                                            const Icon(Icons.chevron_right, color: AppTheme.outlineColor),
+                                          ],
+                                        ),
                                       ],
                                     ),
                                     const SizedBox(height: 12.0),

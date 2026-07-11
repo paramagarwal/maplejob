@@ -2,16 +2,31 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/entities/job_application.dart';
 import '../../domain/repositories/application_repository.dart';
 import '../../data/repositories/application_repository_impl.dart';
+import '../../data/services/application_firestore_service.dart';
+import '../../domain/usecases/get_applicant_applications_usecase.dart';
+import '../../domain/usecases/submit_application_usecase.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 
+final applicationFirestoreServiceProvider = Provider<ApplicationFirestoreService>((ref) {
+  return ApplicationFirestoreService();
+});
+
 final applicationRepositoryProvider = Provider<ApplicationRepository>((ref) {
-  return ApplicationRepositoryImpl();
+  return ApplicationRepositoryImpl(ref.watch(applicationFirestoreServiceProvider));
+});
+
+final getApplicantApplicationsUseCaseProvider = Provider<GetApplicantApplicationsUseCase>((ref) {
+  return GetApplicantApplicationsUseCase(ref.watch(applicationRepositoryProvider));
+});
+
+final submitApplicationUseCaseProvider = Provider<SubmitApplicationUseCase>((ref) {
+  return SubmitApplicationUseCase(ref.watch(applicationRepositoryProvider));
 });
 
 final applicantApplicationsProvider = StreamProvider<List<JobApplication>>((ref) {
   final user = ref.watch(authStateProvider).value;
   if (user == null) return Stream.value([]);
-  return ref.watch(applicationRepositoryProvider).getApplicationsByApplicant(user.uid);
+  return ref.watch(getApplicantApplicationsUseCaseProvider).call(user.uid);
 });
 
 final applicationStreamProvider = StreamProvider.family<JobApplication?, String>((ref, id) {
